@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/25 14:10:08 by abisiani          #+#    #+#             */
-/*   Updated: 2025/10/03 16:04:39 by abisani          ###   ########.fr       */
+/*   Created: 2025/06/05 13:53:10 by abisiani          #+#    #+#             */
+/*   Updated: 2025/10/03 14:45:45 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-int	main(int argc, char *argv[])
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (argc == 1)
+	if (!lst)
 		return ;
-	
-	ft_printf("All good");
-	return (0);
+	while (lst->next)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
+	f(lst->content);
+}

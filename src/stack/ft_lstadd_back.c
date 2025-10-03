@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/25 14:10:08 by abisiani          #+#    #+#             */
-/*   Updated: 2025/10/03 16:04:39 by abisani          ###   ########.fr       */
+/*   Created: 2025/06/05 12:52:40 by abisiani          #+#    #+#             */
+/*   Updated: 2025/10/03 14:45:33 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-int	main(int argc, char *argv[])
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	if (argc == 1)
-		return ;
-	
-	ft_printf("All good");
-	return (0);
+	if (!*lst)
+		*lst = new;
+	else
+		ft_lstlast(*lst)->next = new;
+}

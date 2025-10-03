@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   print_c.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/25 14:10:08 by abisiani          #+#    #+#             */
-/*   Updated: 2025/10/03 16:04:39 by abisani          ###   ########.fr       */
+/*   Created: 2025/07/11 17:05:34 by abisiani          #+#    #+#             */
+/*   Updated: 2025/10/03 15:17:19 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ft_printf.h"
 
-int	main(int argc, char *argv[])
+int	print_c(int c)
 {
-	if (argc == 1)
-		return ;
-	
-	ft_printf("All good");
-	return (0);
+	write(1, &c, 1);
+	return (1);
+}

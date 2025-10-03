@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/25 14:10:08 by abisiani          #+#    #+#             */
-/*   Updated: 2025/10/03 16:04:39 by abisani          ###   ########.fr       */
+/*   Created: 2025/05/29 16:07:36 by abisiani          #+#    #+#             */
+/*   Updated: 2025/10/03 15:05:29 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ft_printf.h"
 
-int	main(int argc, char *argv[])
+void	ft_putnbr_fd(int n, int fd)
 {
-	if (argc == 1)
+	int	num;
+
+	num = 0;
+	if (n == -2147483648)
+	{
+		write(fd, "-2147483648", 11);
 		return ;
-	
-	ft_printf("All good");
-	return (0);
+	}
+	if (n < 0)
+	{
+		write(fd, "-", 1);
+		n *= -1;
+	}
+	if (n > 9)
+		ft_putnbr_fd(n / 10, fd);
+	num = n % 10 + '0';
+	write(fd, &num, 1);
+}

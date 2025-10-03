@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   print_s.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abisiani <abisiani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/25 14:10:08 by abisiani          #+#    #+#             */
-/*   Updated: 2025/10/03 16:04:39 by abisani          ###   ########.fr       */
+/*   Created: 2025/07/15 11:52:38 by abisiani          #+#    #+#             */
+/*   Updated: 2025/09/17 20:45:30 by abisiani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ft_printf.h"
 
-int	main(int argc, char *argv[])
+int	print_s(char *s)
 {
-	if (argc == 1)
-		return ;
-	
-	ft_printf("All good");
-	return (0);
+	int		len;
+
+	len = 0;
+	if (s == NULL)
+		return (write(1, "(null)", 6));
+	while (*s)
+		len += write(1, s++, 1);
+	return (len);
+}
