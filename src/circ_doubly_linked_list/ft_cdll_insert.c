@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_cdll_insert.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/25 14:10:08 by abisiani          #+#    #+#             */
-/*   Updated: 2025/10/06 13:55:02 by abisani          ###   ########.fr       */
+/*   Created: 2025/10/06 14:13:35 by abisani           #+#    #+#             */
+/*   Updated: 2025/10/06 14:44:06 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	push_swap(t_list *stack)
+void	ft_clst_insert(t_list **lst, t_list *new)
 {
-	(void) stack;
-}
+	t_list	*head;
 
-int	main(int argc, char *argv[])
-{
-	t_list	*stack;
-
-	if (argc == 1)
-		return (0);
-	argc--;
-	stack = ft_lstnew(argv[argc]);
-	ft_printf("\nIn the order they're read in: \n");
-	while (argc > 0)
-	{
-		ft_printf("%s ", argv[argc]);
-		ft_lstadd_front(&stack, ft_lstnew(argv[argc]));
-		argc--;
-	}
-	push_swap(stack);
-
-	return (0);
+	if (!*lst)
+		*lst = new;
+	head = (*lst)->next;
+	(*lst)->next = new;
+	new->next = head;
 }

@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:24:26 by abisani           #+#    #+#             */
-/*   Updated: 2025/10/03 16:20:55 by abisani          ###   ########.fr       */
+/*   Updated: 2025/10/06 14:43:24 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ typedef struct s_list
 	void			*content;
 	size_t			rank;
 	struct s_list	*next;
+	struct s_list	*prev;
 }					t_list;
 
+void	ft_clst_insert(t_list **lst, t_list *new);
 int		ft_printf(const char *format, ...);
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
