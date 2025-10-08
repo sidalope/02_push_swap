@@ -1,14 +1,14 @@
-# **************************************************************************** #
+#******************************************************************************#
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abisani <abisani@student.42.fr>            +#+  +:+       +#+         #
+#    By: abisiani <abisiani@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/07 22:59:16 by abisiani          #+#    #+#              #
-#    Updated: 2025/10/06 14:43:07 by abisani          ###   ########.fr        #
+#    Updated: 2025/10/08 16:35:05 by abisiani         ###   ########.fr        #
 #                                                                              #
-# **************************************************************************** #
+#******************************************************************************#
 
 .PHONY: all clean fclean re bonus test test_wrap
 
@@ -26,9 +26,10 @@ SRC_DIR = src
 
 SRC_FILES = push_swap.c
 
-CDLL_FILES = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
-	ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c \
-	ft_cdll_insert.c
+LIST_FILES = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
+	ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
+
+LIST_UTILS_FILES = push.c rotate.c swap.c del.c
 
 PRINTF_FILES = intlen.c put_unsnbr_fd.c ft_printf.c print_c.c print_s.c \
 	print_p.c print_di.c print_u.c print_x.c print_x_cap.c ft_putnbr_fd.c
@@ -36,7 +37,8 @@ PRINTF_FILES = intlen.c put_unsnbr_fd.c ft_printf.c print_c.c print_s.c \
 UTILS_FILES = ft_atoi.c
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRC_FILES)) \
-	$(addprefix $(SRC_DIR)/circ_doubly_linked_list/, $(CDLL_FILES)) \
+	$(addprefix $(SRC_DIR)/d_linked_list/, $(LIST_FILES)) \
+	$(addprefix $(SRC_DIR)/d_linked_list/list_utils/, $(LIST_UTILS_FILES)) \
 	$(addprefix $(SRC_DIR)/printf/, $(PRINTF_FILES)) \
 	$(addprefix $(SRC_DIR)/utils/, $(UTILS_FILES)) \
 
@@ -71,6 +73,7 @@ re: fclean all
 test: re
 	$(CC) -g $(CFLAGS) -o $(EXECUTABLE) $(SRC_DIR)/$(SRC_FILES) -L. -lpushswap
 	./tests/tests.sh
+# 	make fclean
 
 # test_wrap: re
 # 	$(CC) -g $(CFLAGS) -rdynamic -Wl,--wrap=malloc -Wl,--wrap=free -o $(EXECUTABLE) push_swap.c $(SRC_FILES)
