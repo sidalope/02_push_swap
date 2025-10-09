@@ -1,19 +1,19 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   del.c                                              :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abisiani <abisiani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/08 16:22:43 by abisiani          #+#    #+#             */
-/*   Updated: 2025/10/08 16:26:17 by abisiani         ###   ########.fr       */
+/*   Created: 2025/06/05 13:12:47 by abisiani          #+#    #+#             */
+/*   Updated: 2025/10/09 13:51:51 by abisiani         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
-#include "../../push_swap.h"
+#include "../push_swap.h"
 
-void	del(t_list *node)
+void	ft_lstdelone(t_list_node *lst)
 {
-	node->content = NULL;
-	node->rank = 0;
+	free(lst->content);
+	free(lst);
 }

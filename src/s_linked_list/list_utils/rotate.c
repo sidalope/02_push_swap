@@ -1,25 +1,30 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abisiani <abisiani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/08 14:09:34 by abisiani          #+#    #+#             */
-/*   Updated: 2025/10/08 15:11:04 by abisiani         ###   ########.fr       */
+/*   Created: 2025/10/08 14:14:56 by abisiani          #+#    #+#             */
+/*   Updated: 2025/10/09 16:33:52 by abisiani         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
+
 #include "../../push_swap.h"
 
-int	push(t_list **src, t_list **dest)
+int	rotate(t_list_node **lst)
 {
-	t_list	*next;
-
-	if (!src || !*src)
+	if (!lst || !*lst)
 		return (-1);
-	next = (*src)->next;
-	ft_lstadd_front(dest, (*src));
-	*src = next;
+	*lst = (*lst)->next;
+	return (0);
+}
+
+int	rrotate(t_list_node **lst)
+{
+	if (!lst || !*lst)
+		return (-1);
+	*lst = (*lst)->prev;
 	return (0);
 }

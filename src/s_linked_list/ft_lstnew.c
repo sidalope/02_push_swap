@@ -1,26 +1,27 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abisiani <abisiani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/08 14:14:56 by abisiani          #+#    #+#             */
-/*   Updated: 2025/10/08 14:31:48 by abisiani         ###   ########.fr       */
+/*   Created: 2025/06/05 11:26:08 by abisiani          #+#    #+#             */
+/*   Updated: 2025/10/09 11:29:56 by abisiani         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
+#include "../push_swap.h"
 
-#include "../../push_swap.h"
-
-int	rotate(t_list *lst)
+t_list_node	*ft_lstnew(void *content)
 {
-	(void)lst;
-	return (0);
-}
+	t_list_node	*new_node;
 
-int	rrotate(t_list *lst)
-{
-	(void)lst;
-	return (0);
+	new_node = (t_list_node *) malloc(sizeof(t_list_node));
+	if (!new_node)
+		return (NULL);
+	new_node->content = content;
+	new_node->rank = 0;
+	new_node->next = NULL;
+	new_node->prev = NULL;
+	return (new_node);
 }
