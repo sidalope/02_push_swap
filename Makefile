@@ -6,7 +6,7 @@
 #    By: abisiani <abisiani@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/07 22:59:16 by abisiani          #+#    #+#              #
-#    Updated: 2025/10/09 16:51:17 by abisiani         ###   ########.fr        #
+#    Updated: 2025/10/09 16:54:07 by abisiani         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -59,7 +59,7 @@ clean:
 	rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(NAME) $(EXECUTABLE)
+	rm -f $(NAME) $(EXECUTABLE) test_$(EXECUTABLE)
 
 re: fclean all
 
