@@ -6,7 +6,7 @@
 #    By: abisiani <abisiani@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/07 22:59:16 by abisiani          #+#    #+#              #
-#    Updated: 2025/10/09 16:13:23 by abisiani         ###   ########.fr        #
+#    Updated: 2025/10/09 16:51:17 by abisiani         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -37,8 +37,8 @@ PRINTF_FILES = intlen.c put_unsnbr_fd.c ft_printf.c print_c.c print_s.c \
 UTILS_FILES = ft_atoi.c
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRC_FILES)) \
-	$(addprefix $(SRC_DIR)/s_linked_list/, $(LIST_FILES)) \
-	$(addprefix $(SRC_DIR)/s_linked_list/list_utils/, $(LIST_UTILS_FILES)) \
+	$(addprefix $(SRC_DIR)/cd_linked_list/, $(LIST_FILES)) \
+	$(addprefix $(SRC_DIR)/cd_linked_list/list_utils/, $(LIST_UTILS_FILES)) \
 	$(addprefix $(SRC_DIR)/printf/, $(PRINTF_FILES)) \
 	$(addprefix $(SRC_DIR)/utils/, $(UTILS_FILES)) \
 
