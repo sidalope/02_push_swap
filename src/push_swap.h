@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:24:26 by abisani           #+#    #+#             */
-/*   Updated: 2025/10/15 20:32:09 by abisani          ###   ########.fr       */
+/*   Updated: 2025/10/17 14:15:26 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ typedef struct s_list_node
 
 typedef struct s_stacks
 {
-	struct s_list_node	*a;
-	struct s_list_node	*b;
+	t_list_node	*a;
+	t_list_node	*b;
 }						t_stacks;
 
 int			ft_printf(const char *format, ...);
@@ -38,7 +38,7 @@ t_list_node	*ft_lstnew(int content);
 void		ft_lstadd_front(t_list_node **lst, t_list_node *new);
 int			ft_lstsize(t_list_node *lst);
 void		ft_lstdelone(t_list_node *lst);
-void		ft_lstclear(t_list_node **lst);
+void		ft_lstclear(t_list_node **current, t_list_node *head);
 void		ft_lstiter(t_list_node *current, t_list_node *head, void (*f)(int));
 
 int			push(t_list_node **src, t_list_node **dest);
@@ -52,7 +52,7 @@ int			is_sorted(t_list_node *lst);
 int			ft_atoi(char *str);
 int			ft_isnumber(char *str);
 void		ps_error(void);
-void		check_and_rank(t_list_node *lst, t_list_node *head);
+int			check_and_rank(t_list_node *lst, t_list_node *head);
 void		print_ranks(t_list_node *lst);
 
 #endif
