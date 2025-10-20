@@ -6,11 +6,11 @@
 #    By: abisani <abisani@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/07 22:59:16 by abisiani          #+#    #+#              #
-#    Updated: 2025/10/15 21:32:53 by abisani          ###   ########.fr        #
+#    Updated: 2025/10/20 13:57:31 by abisani          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: all clean fclean re bonus test test_wrap unit_tests
+.PHONY: all clean fclean re bonus test unit_tests
 
 CFLAGS = -Wall -Werror -Wextra
 
@@ -23,8 +23,8 @@ LIB_NAME = libpushswap.a
 
 SRC_DIR = src
 
-MAIN_SRC_FILES = push_swap.c
-LIB_SRC_FILES = init.c
+MAIN_SRC_FILES = main.c
+LIB_SRC_FILES = msort.c init.c
 
 LIST_FILES = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstdelone.c \
 	ft_lstclear.c ft_lstiter.c
@@ -51,8 +51,8 @@ all: $(NAME)
 $(LIB_NAME): $(LIB_OBJ)
 	$(AR) $@ $(LIB_OBJ)
 
-$(NAME): $(LIB_NAME) $(MAIN_OBJ)
-	$(CC) -g $(CFLAGS) -o $(NAME) $(MAIN_OBJ) -L. -lpushswap
+$(NAME): $(MAIN_OBJ) $(LIB_NAME)
+	$(CC) $(CFLAGS) -g -o $(NAME) $(MAIN_OBJ) -L. -lpushswap
 
 %.o: %.c push_swap.h
 	$(CC) $(CFLAGS) -g -c $< -o $@

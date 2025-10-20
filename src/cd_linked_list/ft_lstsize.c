@@ -6,25 +6,18 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:42:46 by abisiani          #+#    #+#             */
-/*   Updated: 2025/10/15 17:15:21 by abisani          ###   ########.fr       */
+/*   Updated: 2025/10/20 22:01:14 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ft_lstsize(t_list_node *lst)
+int	ft_lstsize(t_list_node *lst, size_t init_size, t_list_node *head)
 {
-	(void)lst;
-	return (0);
-	// int	size;
-
-	// if (!lst)
-	// 	return (0);
-	// size = 1;
-	// while (lst->next)
-	// {
-	// 	lst = lst->next;
-	// 	size++;
-	// }
-	// return (size);
+	if (!lst)
+		return (0);
+	if (lst->next == head)
+		return (++init_size);
+	init_size = ft_lstsize(lst->next, ++init_size, head);
+	return (init_size);
 }
