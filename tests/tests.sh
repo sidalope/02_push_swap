@@ -2,4 +2,5 @@
 
 # COUNT=${1:-10}
 # MAX=${2:-100}
-./push_swap $(cat tests/random_10.txt)
+valgrind -s --leak-check=full ./push_swap 1 2 3 0 78 3 3 5 643 64
+valgrind -s --leak-check=full ./push_swap $(cat tests/random_10.txt)
