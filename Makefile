@@ -6,7 +6,7 @@
 #    By: abisani <abisani@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/07 22:59:16 by abisiani          #+#    #+#              #
-#    Updated: 2025/10/20 13:57:31 by abisani          ###   ########.fr        #
+#    Updated: 2025/10/21 20:01:00 by abisani          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRC_DIR = src
 MAIN_SRC_FILES = main.c
 LIB_SRC_FILES = msort.c init.c
 
-LIST_FILES = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstdelone.c \
+LIST_FILES = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstpop.c \
 	ft_lstclear.c ft_lstiter.c
 
 LIST_UTILS_FILES = push.c rotate.c swap.c del.c print_content.c is_sorted.c

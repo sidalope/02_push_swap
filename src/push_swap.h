@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:24:26 by abisani           #+#    #+#             */
-/*   Updated: 2025/10/21 13:11:07 by abisani          ###   ########.fr       */
+/*   Updated: 2025/10/21 20:01:52 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int			ft_printf(const char *format, ...);
 t_list_node	*ft_lstnew(int content);
 void		ft_lstadd_front(t_list_node **lst, t_list_node *new);
 int			ft_lstsize(t_list_node *lst, size_t init_size, t_list_node *head);
-void		ft_lstdelone(t_list_node *lst);
+void		ft_lstpop(t_list_node **lst);
 void		ft_lstclear(t_list_node **current, t_list_node *head);
 void		ft_lstiter(t_list_node *current, t_list_node *head, void (*f)(int));
 
