@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 18:58:28 by abisani           #+#    #+#             */
-/*   Updated: 2025/10/20 17:49:10 by abisani          ###   ########.fr       */
+/*   Updated: 2025/10/21 15:43:57 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@ static void	clean_up(t_stacks *stacks)
 {
 	ft_lstclear(&stacks->a, stacks->a);
 	ft_lstclear(&stacks->b, stacks->b);
+	ft_lstclear(&stacks->list_sizes_min, stacks->list_sizes_min);
+	ft_lstclear(&stacks->list_sizes_mid, stacks->list_sizes_mid);
+	ft_lstclear(&stacks->list_sizes_max, stacks->list_sizes_max);
 }
 
 int	main(int argc, char *argv[])

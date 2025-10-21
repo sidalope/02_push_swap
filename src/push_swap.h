@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:24:26 by abisani           #+#    #+#             */
-/*   Updated: 2025/10/20 22:38:40 by abisani          ###   ########.fr       */
+/*   Updated: 2025/10/21 13:11:07 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void		print_lst_sizes(t_stacks *stacks);
 int			is_sorted(t_list_node *lst);
 
 int			init(int argc, char *argv[], t_stacks *stacks);
+int			check_and_rank(t_list_node *lst, t_list_node *head);
 void		msort(t_stacks *stacks, size_t len);
 
 int			ft_atoi(char *str);

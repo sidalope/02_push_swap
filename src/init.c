@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:52:41 by abisani           #+#    #+#             */
-/*   Updated: 2025/10/20 22:47:51 by abisani          ###   ########.fr       */
+/*   Updated: 2025/10/21 13:08:29 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	verify_node(t_list_node *node, t_list_node *head)
 	return (1);
 }
 
-static int	check_and_rank(t_list_node *lst, t_list_node *head)
+int	check_and_rank(t_list_node *lst, t_list_node *head)
 {
 	if (!lst || !head)
 		return (0);
