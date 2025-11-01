@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abisiani <abisiani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:52:41 by abisani           #+#    #+#             */
-/*   Updated: 2025/10/21 13:08:29 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/01 14:47:05 by abisiani         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "push_swap.h"
 
@@ -62,6 +62,9 @@ int	init(int argc, char *argv[], t_stacks *stacks)
 	stacks->list_sizes_min = NULL;
 	stacks->list_sizes_mid = NULL;
 	stacks->list_sizes_max = NULL;
+	ft_lstadd_front(&(stacks->list_sizes_min), ft_lstnew(0));
+	ft_lstadd_front(&(stacks->list_sizes_mid), ft_lstnew(0));
+	ft_lstadd_front(&(stacks->list_sizes_max), ft_lstnew(0));
 	while (argc > 0)
 	{
 		if (!ft_isnumber(argv[argc]))

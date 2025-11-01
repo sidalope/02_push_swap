@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   print_content.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abisiani <abisiani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 14:43:42 by abisiani          #+#    #+#             */
-/*   Updated: 2025/10/21 15:49:11 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/01 14:48:10 by abisiani         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "../../push_swap.h"
 
@@ -40,6 +40,8 @@ void	print_lst_ranks(t_list_node *current, t_list_node *head)
 
 void	print_lst_sizes(t_stacks *stacks)
 {
+	if (!stacks->list_sizes_min || !stacks->list_sizes_mid || !stacks->list_sizes_max)
+		return ;
 	ft_printf("min: ");
 	print_lst_content(stacks->list_sizes_min, stacks->list_sizes_min);
 	ft_printf("mid: ");
