@@ -6,7 +6,7 @@
 #    By: abisani <abisani@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/07 22:59:16 by abisiani          #+#    #+#              #
-#    Updated: 2025/10/21 20:01:00 by abisani          ###   ########.fr        #
+#    Updated: 2025/11/04 10:43:05 by abisani          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ LIB_NAME = libpushswap.a
 SRC_DIR = src
 
 MAIN_SRC_FILES = main.c
-LIB_SRC_FILES = msort.c init.c
+LIB_SRC_FILES = insertion_sort.c init.c
 
 LIST_FILES = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstpop.c \
 	ft_lstclear.c ft_lstiter.c

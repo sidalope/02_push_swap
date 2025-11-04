@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abisiani <abisiani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:24:26 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/01 14:12:19 by abisiani         ###   ########.fr       */
+/*   Updated: 2025/11/04 10:46:13 by abisani          ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -54,14 +54,18 @@ void		print_lst_ranks(t_list_node *current, t_list_node *head);
 void		print_lst_sizes(t_stacks *stacks);
 int			is_sorted(t_list_node *lst);
 
-int			init(int argc, char *argv[], t_stacks *stacks);
-int			check_and_rank(t_list_node *lst, t_list_node *head);
-void		msort(t_stacks *stacks, size_t len);
-
+// Utils
 int			ft_atoi(char *str);
 int			ft_isnumber(char *str);
 void		ps_error(void);
-void		print_ranks(t_list_node *lst);
+
+// Init files
+int			init(int argc, char *argv[], t_stacks *stacks);
+int			check_and_rank(t_list_node *lst, t_list_node *head);
 void		print_lists(t_stacks *stacks);
+void		print_ranks(t_list_node *lst);
+
+// Main insertion sort entry point
+int			sort(t_stacks *stacks, size_t len);
 
 #endif

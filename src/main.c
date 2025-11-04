@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abisiani <abisiani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 18:58:28 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/01 14:12:35 by abisiani         ###   ########.fr       */
+/*   Updated: 2025/11/04 10:46:51 by abisani          ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -32,9 +32,10 @@ int	main(int argc, char *argv[])
 		return (1);
 	if (!is_sorted(stacks.a))
 	{
-		ft_printf("\nNot sorted.\n");
-		msort(&stacks, argc);
-		// ft_printf("Finished sorting.");
+		if (sort(&stacks, argc))
+			ft_printf("Finished sorting:\n");
+		else
+			ft_printf("Error sorting\n");
 		print_lists(&stacks);
 	}
 	else
