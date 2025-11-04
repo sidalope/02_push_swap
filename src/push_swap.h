@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:24:26 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/04 10:46:13 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/04 11:11:45 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ void		ft_lstpop(t_list_node **lst);
 void		ft_lstclear(t_list_node **current, t_list_node *head);
 void		ft_lstiter(t_list_node *current, t_list_node *head, void (*f)(int));
 
-int			push(t_list_node **src, t_list_node **dest);
-int			swap(t_list_node **lst);
-int			rotate(t_list_node **lst);
-int			rrotate(t_list_node **lst);
+int			push(t_list_node **src, t_list_node **dest, t_list_node *list_a);
+int			swap(t_list_node **lst, t_list_node *list_a);
+int			rotate(t_list_node **lst, t_list_node *list_a);
+int			rrotate(t_list_node **lst, t_list_node *list_a);
 void		del(t_list_node *node);
 void		print_lst_content(t_list_node *current, t_list_node *head);
 void		print_lst_ranks(t_list_node *current, t_list_node *head);

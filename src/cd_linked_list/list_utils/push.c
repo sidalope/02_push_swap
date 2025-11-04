@@ -1,24 +1,30 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abisiani <abisiani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 14:09:34 by abisiani          #+#    #+#             */
-/*   Updated: 2025/10/09 14:05:32 by abisiani         ###   ########.fr       */
+/*   Updated: 2025/11/04 11:16:16 by abisani          ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "../../push_swap.h"
 
-int	push(t_list_node **src, t_list_node **dest)
+// static void	print_push()
+
+int	push(t_list_node **src, t_list_node **dest, t_list_node *list_a)
 {
 	t_list_node	*second;
 	t_list_node	*last;
 
 	if (!src || !*src)
 		return (-1);
+	if (*src == list_a)
+		ft_printf("pb\n");
+	else
+		ft_printf("pa\n");
 	if ((*src)->next == *src)
 	{
 		ft_lstadd_front(dest, *src);

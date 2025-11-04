@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 10:26:56 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/04 10:41:23 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/04 11:15:27 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	find_next_rank(t_stacks *stacks, size_t next_rank)
 {
 	while (stacks->a->rank != next_rank)
-		rotate(&(stacks->a));
+		rotate(&(stacks->a), stacks->a);
 }
 
 int	sort(t_stacks *stacks, size_t len)
@@ -26,11 +26,11 @@ int	sort(t_stacks *stacks, size_t len)
 	while (next_rank < len)
 	{
 		find_next_rank(stacks, next_rank++);
-		push(&(stacks->a), &(stacks->b));
+		push(&(stacks->a), &(stacks->b), stacks->a);
 	}
 	while (len--)
-		push(&(stacks->b), &(stacks->a));
-	if (is_sorted(stacks->a))
+		push(&(stacks->b), &(stacks->a), stacks->a);
+	if (stacks->a && is_sorted(stacks->a))
 		return (1);
 	return (0);
 }
