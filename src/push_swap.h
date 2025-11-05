@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:24:26 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/04 11:11:45 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/05 21:01:58 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 
 typedef struct s_list_node
 {
-	int					content;
-	size_t				rank;
+	long				content;
+	int					rank;
 	struct s_list_node	*next;
 	struct s_list_node	*prev;
 }						t_list_node;
@@ -30,14 +30,16 @@ typedef struct s_stacks
 {
 	t_list_node			*a;
 	t_list_node			*b;
-	t_list_node			*list_sizes_min;
-	t_list_node			*list_sizes_mid;
-	t_list_node			*list_sizes_max;
+	// t_list_node			*sort_sizes_a;
+	// t_list_node			*sort_sizes_b;
+	// t_list_node			*list_sizes_min;
+	// t_list_node			*list_sizes_mid;
+	// t_list_node			*list_sizes_max;
 }						t_stacks;
 
 int			ft_printf(const char *format, ...);
 
-t_list_node	*ft_lstnew(int content);
+t_list_node	*ft_lstnew(long content);
 void		ft_lstadd_front(t_list_node **lst, t_list_node *new);
 int			ft_lstsize(t_list_node *lst, size_t init_size, t_list_node *head);
 void		ft_lstpop(t_list_node **lst);
@@ -55,7 +57,7 @@ void		print_lst_sizes(t_stacks *stacks);
 int			is_sorted(t_list_node *lst);
 
 // Utils
-int			ft_atoi(char *str);
+long		ft_atoi(char *str);
 int			ft_isnumber(char *str);
 void		ps_error(void);
 
@@ -67,5 +69,6 @@ void		print_ranks(t_list_node *lst);
 
 // Main insertion sort entry point
 int			sort(t_stacks *stacks, size_t len);
+void		radix_sort(t_stacks *stacks);
 
 #endif

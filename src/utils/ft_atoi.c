@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:55:28 by abisiani          #+#    #+#             */
-/*   Updated: 2025/10/15 18:50:56 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/05 20:49:19 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static char	*skip_whitespace(char *str)
 	return (str);
 }
 
-int	ft_atoi(char *str)
+long	ft_atoi(char *str)
 {
 	long	res;
 	int		minus;
@@ -46,5 +46,5 @@ int	ft_atoi(char *str)
 		if (minus)
 			res *= -1;
 	}
-	return ((int) res);
+	return (res);
 }

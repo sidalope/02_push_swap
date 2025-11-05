@@ -48,5 +48,54 @@
 
 // Optimisations?
 // Unfortunately you have to rotate a fully to keep the list sorted
-// Identify radixes that don't require sorting to eliminate a whole step?
+// Won't work with ranks:
+//		Identify radixes that don't require sorting to eliminate a whole step?
 // Do a bloody handstand.
+
+// static int	find_max_rank(t_list_node *lst)
+// {
+// 	int		max_rank;
+// 	int		size;
+
+// 	max_rank = 0;
+// 	size = ft_lstsize(lst, 0, lst);
+// 	while (size--)
+// 	{
+// 		if (lst->rank > max_rank)
+// 			max_rank = lst->content;
+// 		rotate(&lst, lst);
+// 	}
+// 	return (max_rank);
+// }
+
+//	find largest number of bits
+//		use largest number and shift it right by varying amounts until it's 0
+
+void	radix_sort(t_stacks *stacks)
+{
+	int		i;
+	int		max_num_bits;
+	int		max_rank;
+	int		size_a;
+
+	i = 0;
+	max_num_bits = 0;
+	max_rank = ft_lstsize(stacks->a, 0, stacks->a) - 1;
+	size_a = ft_lstsize(stacks->a, 0, stacks->a);
+	while (max_rank >> max_num_bits != 0)
+		max_num_bits++;
+	while (i < max_num_bits)
+	{
+		size_a = ft_lstsize(stacks->a, 0, stacks->a);
+		while (size_a--)
+		{
+			if ((stacks->a->rank >> i) & 1)
+				rotate(&(stacks->a), stacks->a);
+			else
+				push(&(stacks->a), &(stacks->b), stacks->a);
+		}
+		while (stacks->b)
+			push(&(stacks->b), &(stacks->a), stacks->a);
+		i++;
+	}
+}
