@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:24:26 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/05 21:01:58 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/06 10:39:22 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ void		print_ranks(t_list_node *lst);
 // Main insertion sort entry point
 int			sort(t_stacks *stacks, size_t len);
 void		radix_sort(t_stacks *stacks);
+void		halfway_algo(t_stacks *stacks);
 
 #endif
