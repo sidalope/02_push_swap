@@ -1,0 +1,33 @@
+// chunk sort
+// - Divide the ranks into subsets
+// - Pick out the subsets one at a time
+//         - b will be largest first, so start with smallest ranks
+//         - Find the first elem of the current subset from the top of a
+//         - Find the first elem of the current subset from the bottom of a
+//         - Find which is fastest to move to b
+//         - ? Find the spot in b in which it goes
+//         - Rotate or rrotate a (and b ? ) in position and push it to b; pb
+//         - Rotate b so largest rank is at the top 
+// - repeat for all other subsets 
+// - rotate b to have largest first
+// - push b to a
+
+// merge sort
+// initalise
+//		split_a recursively until a is a sorted pair
+//		set sort_sizes_a to 0
+//		every call adds a node to sort_sizes_b
+// while (!is_sorted(a) && there is something in b)
+//		if (sort_sizes_a > 0)
+//			split_a (change sort_sizes_a and add node to sort_sizes_b)
+//				rotates down the largest and pushes the smallest halves
+//			rrotate the larger half back up
+//		else if (sort_sizes_b > 0)
+//			send b back to a and remove sort_sizes_b and add node to 
+//			sort_sizes_a
+
+// Radix sort optimisations?
+// Unfortunately you have to rotate a fully to keep the list sorted
+// Won't work with ranks:
+//		Identify radixes that don't require sorting to eliminate a whole step?
+// Do a bloody handstand.
