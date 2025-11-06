@@ -245,6 +245,8 @@ echo "$CSV_OPERATIONS" >> "$CSV_FILE"
 echo ""
 echo "Results saved to: $CSV_FILE"
 
+python3 plot_results.py
+
 if [ $FAILED_TESTS -eq 0 ]; then
     echo -e "${GREEN}All tests passed! 🎉${NC}"
     exit 0
@@ -252,5 +254,3 @@ else
     echo -e "${RED}Some tests failed. Check the output above for details.${NC}"
     exit 1
 fi
-
-python3 plot_results.py
