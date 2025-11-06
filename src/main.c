@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abisiani <abisiani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 18:58:28 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/05 21:00:57 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/06 13:00:45 by abisiani         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "push_swap.h"
 
@@ -34,20 +34,17 @@ int	main(int argc, char *argv[])
 	if (!init(argc, argv, &stacks))
 		return (1);
 	if (!is_sorted(stacks.a))
-		radix_sort(&stacks);
-	if (!is_sorted(stacks.a) || stacks.b)
-		return (ps_error(), 0);
+	{
+		halfway_sort(&stacks);
+		ft_printf("Finished sorting\n");
+	}
+	else
+		ft_printf("\nAlready sorted.\n");
 	clean_up(&stacks);
 	return (0);
 }
 
 // if (!is_sorted(stacks.a))
-	// {
-	// 	if (radix_sort(&stacks))
-	// 		ft_printf("Finished sorting:\n");
-	// 	else
-	// 		ft_printf("Error sorting\n");
-	// 	print_lists(&stacks);
-	// }
-	// else
-	// 	ft_printf("\nAlready sorted.\n");
+	// 	halfway_sort(&stacks);
+	// if (!is_sorted(stacks.a) || stacks.b)
+	// 	return (ps_error(), 0);

@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abisiani <abisiani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:24:26 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/06 10:39:22 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/06 13:47:31 by abisiani         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -55,21 +55,26 @@ void		print_lst_content(t_list_node *current, t_list_node *head);
 void		print_lst_ranks(t_list_node *current, t_list_node *head);
 void		print_lst_sizes(t_stacks *stacks);
 int			is_sorted(t_list_node *lst);
+void		print_lists(t_stacks *stacks);
+void		print_ranks(t_stacks *stacks);
 
 // Utils
+int			abs(int x);
 long		ft_atoi(char *str);
 int			ft_isnumber(char *str);
 void		ps_error(void);
 
+//	Halfway sort utils
+void		send_bottom_ranks(t_stacks *stacks);
+void		send_top_ranks(t_stacks *stacks);
+int			get_node_distance(t_stacks *stacks, int rank);
+
 // Init files
 int			init(int argc, char *argv[], t_stacks *stacks);
 int			check_and_rank(t_list_node *lst, t_list_node *head);
-void		print_lists(t_stacks *stacks);
-void		print_ranks(t_list_node *lst);
 
 // Main insertion sort entry point
 int			sort(t_stacks *stacks, size_t len);
-void		radix_sort(t_stacks *stacks);
-void		halfway_algo(t_stacks *stacks);
+void		halfway_sort(t_stacks *stacks);
 
 #endif
