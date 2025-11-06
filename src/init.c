@@ -1,40 +1,16 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abisiani <abisiani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:52:41 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/05 20:55:37 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/06 12:18:02 by abisiani         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "push_swap.h"
-
-void	print_lists(t_stacks *stacks)
-{
-	ft_printf("a: ");
-	print_lst_content(stacks->a, stacks->a);
-	ft_printf("b: ");
-	print_lst_content(stacks->b, stacks->b);
-}
-
-void	print_ranks(t_list_node *lst)
-{
-	t_list_node	*last;
-
-	if (!lst)
-		return ;
-	last = lst->prev;
-	ft_printf("\n");
-	while (lst != last)
-	{
-		ft_printf("elem %i: %i\n", (int) lst->content, lst->rank);
-		lst = lst->next;
-	}
-	ft_printf("elem %i: %i\n", (int) lst->content, lst->rank);
-}
 
 static int	verify_node(t_list_node *node, t_list_node *head)
 {
