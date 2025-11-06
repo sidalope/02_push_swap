@@ -1,23 +1,23 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   halfway_sort_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abisiani <abisiani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 13:44:31 by abisiani          #+#    #+#             */
-/*   Updated: 2025/11/06 13:48:39 by abisiani         ###   ########.fr       */
+/*   Updated: 2025/11/06 20:58:13 by abisani          ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 void	send_bottom_ranks(t_stacks *stacks)
 {
 	int	length_a;
 	int	length_b;
 	int	median;
-	
+
 	length_a = ft_lstsize(stacks->a, 0, stacks->a);
 	length_b = 0;
 	median = length_a / 2;
@@ -25,11 +25,11 @@ void	send_bottom_ranks(t_stacks *stacks)
 	{
 		if (stacks->a->rank >= median)
 		{
-			push(&(stacks->a), &(stacks->b), stacks->a);
+			push(&(stacks->a), &(stacks->b), stacks);
 			length_b++;
 		}
 		else
-			rotate(&(stacks->a), stacks->a);
+			rotate(&(stacks->a), stacks);
 	}
 }
 
@@ -38,7 +38,7 @@ void	send_top_ranks(t_stacks *stacks)
 	int	length_a;
 	int	length_b;
 	int	median;
-	
+
 	length_a = ft_lstsize(stacks->a, 0, stacks->a);
 	length_b = 0;
 	median = length_a / 2;
@@ -46,24 +46,25 @@ void	send_top_ranks(t_stacks *stacks)
 	{
 		if (stacks->a->rank < median)
 		{
-			push(&(stacks->a), &(stacks->b), stacks->a);
-			print_ranks(stacks);
+			push(&(stacks->a), &(stacks->b), stacks);
 			length_b++;
 		}
 		else
-			rotate(&(stacks->a), stacks->a);
+			rotate(&(stacks->a), stacks);
 	}
 }
 
-int	get_node_distance(t_stacks *stacks, int rank)
+int	get_node_dist(t_list_node *current, int rank)
 {
-	int	rotations;
-	int	rev_rotations;
-	t_list_node *current;
+	int				rotations;
+	int				rev_rotations;
+	t_list_node		*head;
 
 	rotations = 0;
 	rev_rotations = 0;
-	current = stacks->b;
+	head = current;
+	if (!current)
+		return (ps_error(), 0);
 	if (current->rank == rank)
 		return (0);
 	while (current->rank != rank)
@@ -71,7 +72,7 @@ int	get_node_distance(t_stacks *stacks, int rank)
 		current = current->next;
 		rotations++;
 	}
-	current = stacks->b;
+	current = head;
 	while (current->rank != rank)
 	{
 		current = current->prev;

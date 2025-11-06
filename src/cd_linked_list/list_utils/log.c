@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_sorted.c                                        :+:      :+:    :+:   */
+/*   log.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/14 16:09:43 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/06 21:40:27 by abisani          ###   ########.fr       */
+/*   Created: 2025/11/06 20:36:08 by abisani           #+#    #+#             */
+/*   Updated: 2025/11/06 21:56:21 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../push_swap.h"
 
-int	is_sorted(t_list_node *lst)
+//also init and tear down log
+void	log_op(t_list_node **log, char *operation)
 {
-	t_list_node	*last;
-
-	if (!lst)
-		return (1);
-	last = lst->prev;
-	while (lst != last)
-	{
-		if (lst->rank > lst->next->rank)
-			return (0);
-		lst = lst->next;
-	}
-	return (1);
+	ft_lstadd_front(log, ft_lstnew(operation));
 }

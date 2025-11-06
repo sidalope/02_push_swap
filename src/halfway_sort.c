@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   halfway_sort.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abisiani <abisiani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 10:37:26 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/06 13:44:17 by abisiani         ###   ########.fr       */
+/*   Updated: 2025/11/06 20:52:53 by abisani          ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 // Halfway algo (Split only half way before making it recursive)
 // 	(This actually seems to allow ignoring list lengths)
@@ -28,13 +28,44 @@ static void	position_push_b(t_stacks *stacks, int moves, int min_flag)
 {
 	if (moves > 0)
 		while (moves--)
-			rotate(&(stacks->b), stacks->a);
+			rotate(&(stacks->b), stacks);
 	else if (moves < 0)
 		while (moves++)
-			rrotate(&(stacks->b), stacks->a);
-	push(&(stacks->b), &(stacks->a), stacks->a);
+			rrotate(&(stacks->b), stacks);
+	push(&(stacks->b), &(stacks->a), stacks);
 	if (min_flag)
-		rotate(&(stacks->a), stacks->a);
+		rotate(&(stacks->a), stacks);
+}
+
+static void	position_a_final(t_stacks *stacks)
+{
+	int	moves;
+
+	moves = get_node_dist(stacks->a, 0);
+	if (moves == 0)
+		return ;
+	else if (moves > 0)
+	{
+		while (stacks->a->rank != 0)
+			rotate(&(stacks->a), stacks);
+	}
+	else
+	{
+		while (stacks->a->rank != 0)
+			rrotate(&(stacks->a), stacks);
+	}
+
+}
+
+static void	subsort_b(t_stacks *stacks, int min, int max)
+{
+	while (stacks->b)
+	{
+		if (get_node_dist(stacks->b, min) < get_node_dist(stacks->b, max))
+			position_push_b(stacks, get_node_dist(stacks->b, min++), 1);
+		else
+			position_push_b(stacks, get_node_dist(stacks->b, max--), 0);
+	}
 }
 
 void	halfway_sort(t_stacks *stacks)
@@ -47,25 +78,10 @@ void	halfway_sort(t_stacks *stacks)
 	min = set_length / 2;
 	max = set_length - 1;
 	send_bottom_ranks(stacks);
-	while (stacks->b)
-	{
-		if (get_node_distance(stacks, min) < get_node_distance(stacks, max))
-			position_push_b(stacks, get_node_distance(stacks, min++), 1);
-		else
-			position_push_b(stacks, get_node_distance(stacks, max--), 0);
-	}
+	subsort_b(stacks, min, max);
 	send_top_ranks(stacks);
 	max = set_length / 2 - 1;
 	min = 0;
-	while (stacks->b)
-	{
-		if (get_node_distance(stacks, min) < get_node_distance(stacks, max))
-			position_push_b(stacks, get_node_distance(stacks, min++), 1);
-		else
-			position_push_b(stacks, get_node_distance(stacks, max--), 0);
-	}
-	print_lists(stacks);
-	print_ranks(stacks);
-// 8. Rotate a into final position
-	ft_printf("REACHED final\n");
+	subsort_b(stacks, min, max);
+	position_a_final(stacks);
 }

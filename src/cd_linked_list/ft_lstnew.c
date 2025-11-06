@@ -6,13 +6,13 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 11:26:08 by abisiani          #+#    #+#             */
-/*   Updated: 2025/11/05 20:48:05 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/06 20:26:06 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_list_node	*ft_lstnew(long content)
+t_list_node	*ft_lstnew(void *content)
 {
 	t_list_node	*new_node;
 

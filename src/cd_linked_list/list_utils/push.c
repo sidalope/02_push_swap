@@ -6,25 +6,24 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 14:09:34 by abisiani          #+#    #+#             */
-/*   Updated: 2025/11/04 11:16:16 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/06 22:34:53 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../push_swap.h"
 
-// static void	print_push()
-
-int	push(t_list_node **src, t_list_node **dest, t_list_node *list_a)
+int	push(t_list_node **src, t_list_node **dest,\
+			t_stacks *stacks)
 {
 	t_list_node	*second;
 	t_list_node	*last;
 
 	if (!src || !*src)
 		return (-1);
-	if (*src == list_a)
-		ft_printf("pb\n");
+	if (*src == stacks->a)
+		log_op(&(stacks->log), "pb");
 	else
-		ft_printf("pa\n");
+		log_op(&(stacks->log), "pa");
 	if ((*src)->next == *src)
 	{
 		ft_lstadd_front(dest, *src);

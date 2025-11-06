@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abisiani <abisiani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 18:58:28 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/06 13:00:45 by abisiani         ###   ########.fr       */
+/*   Updated: 2025/11/06 22:40:43 by abisani          ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -16,6 +16,7 @@ static void	clean_up(t_stacks *stacks)
 {
 	ft_lstclear(&stacks->a, stacks->a);
 	ft_lstclear(&stacks->b, stacks->b);
+	ft_lstclear(&stacks->log, stacks->log);
 	// ft_lstclear(&stacks->sort_sizes_a, stacks->sort_sizes_a);
 	// ft_lstclear(&stacks->sort_sizes_b, stacks->sort_sizes_b);
 }
@@ -33,18 +34,14 @@ int	main(int argc, char *argv[])
 	argc--;
 	if (!init(argc, argv, &stacks))
 		return (1);
+	// print_ranks(&stacks);
+	if (!is_sorted(stacks.a))
+		halfway_sort(&stacks);
 	if (!is_sorted(stacks.a))
 	{
-		halfway_sort(&stacks);
-		ft_printf("Finished sorting\n");
+		ft_printf("Error sorting");
 	}
-	else
-		ft_printf("\nAlready sorted.\n");
+	print_log(stacks.log->prev, stacks.log->prev);
 	clean_up(&stacks);
 	return (0);
 }
-
-// if (!is_sorted(stacks.a))
-	// 	halfway_sort(&stacks);
-	// if (!is_sorted(stacks.a) || stacks.b)
-	// 	return (ps_error(), 0);

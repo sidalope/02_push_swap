@@ -6,13 +6,21 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 14:15:02 by abisiani          #+#    #+#             */
-/*   Updated: 2025/11/04 11:16:26 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/06 22:16:02 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../push_swap.h"
 
-int	swap(t_list_node **lst, t_list_node *list_a)
+static void	log_action(t_list_node **lst, t_stacks *stacks)
+{
+	if (*lst == stacks->a)
+		log_op(&(stacks->log), "sa");
+	else
+		log_op(&(stacks->log), "sb");
+}
+
+int	swap(t_list_node **lst, t_stacks *stacks)
 {
 	t_list_node	*second;
 	t_list_node	*third;
@@ -20,10 +28,7 @@ int	swap(t_list_node **lst, t_list_node *list_a)
 
 	if (!lst || !*lst || (*lst)->next == *lst)
 		return (-1);
-	if (*lst == list_a)
-		ft_printf("sa\n");
-	else
-		ft_printf("sb\n");
+	log_action(lst, stacks);
 	second = (*lst)->next;
 	third = (*lst)->next->next;
 	if (third == *lst)

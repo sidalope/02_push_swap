@@ -1,14 +1,14 @@
-#******************************************************************************#
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abisiani <abisiani@student.42.fr>          +#+  +:+       +#+         #
+#    By: abisani <abisani@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/07 22:59:16 by abisiani          #+#    #+#              #
-#    Updated: 2025/11/06 13:48:05 by abisiani         ###   ########.fr        #
+#    Updated: 2025/11/06 20:59:10 by abisani          ###   ########.fr        #
 #                                                                              #
-#******************************************************************************#
+# **************************************************************************** #
 
 .PHONY: all clean fclean re bonus test unit_tests
 
@@ -24,17 +24,18 @@ LIB_NAME = libpushswap.a
 SRC_DIR = src
 
 MAIN_SRC_FILES = main.c
-LIB_SRC_FILES = halfway_sort.c init.c
+LIB_SRC_FILES = halfway_sort.c init.c halfway_sort_utils.c
 
 LIST_FILES = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstpop.c \
 	ft_lstclear.c ft_lstiter.c
 
-LIST_UTILS_FILES = push.c rotate.c swap.c del.c print_content.c is_sorted.c
+LIST_UTILS_FILES = push.c rotate.c swap.c del.c print_content.c is_sorted.c \
+	log.c
 
 PRINTF_FILES = intlen.c put_unsnbr_fd.c ft_printf.c print_c.c print_s.c \
 	print_p.c print_di.c print_u.c print_x.c print_x_cap.c ft_putnbr_fd.c
 
-UTILS_FILES = abs.c ft_atoi.c ft_isnumber.c halfway_sort_utils.c ps_error.c
+UTILS_FILES = abs.c ft_atoi.c ft_isnumber.c  ps_error.c
 
 MAIN_SRC = $(addprefix $(SRC_DIR)/, $(MAIN_SRC_FILES))
 LIB_SRC = $(addprefix $(SRC_DIR)/, $(LIB_SRC_FILES)) \
