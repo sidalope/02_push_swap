@@ -6,7 +6,7 @@
 #    By: abisani <abisani@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/07 22:59:16 by abisiani          #+#    #+#              #
-#    Updated: 2025/11/06 20:59:10 by abisani          ###   ########.fr        #
+#    Updated: 2025/11/13 19:34:09 by abisani          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,20 +29,23 @@ LIB_SRC_FILES = halfway_sort.c init.c halfway_sort_utils.c
 LIST_FILES = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstpop.c \
 	ft_lstclear.c ft_lstiter.c
 
-LIST_UTILS_FILES = push.c rotate.c swap.c del.c print_content.c is_sorted.c \
-	log.c
+LIST_UTILS_FILES = push.c rotate.c swap.c del.c print_content.c is_sorted.c
+
+OPTIMISER_FILES = log.c naive_optimisation.c utils.c
 
 PRINTF_FILES = intlen.c put_unsnbr_fd.c ft_printf.c print_c.c print_s.c \
 	print_p.c print_di.c print_u.c print_x.c print_x_cap.c ft_putnbr_fd.c
 
-UTILS_FILES = abs.c ft_atoi.c ft_isnumber.c  ps_error.c
+UTILS_FILES = abs.c ft_atoi.c ft_isnumber.c  ps_error.c ft_strncmp.c \
+	ft_strjoin.c ft_strlen.c
 
 MAIN_SRC = $(addprefix $(SRC_DIR)/, $(MAIN_SRC_FILES))
 LIB_SRC = $(addprefix $(SRC_DIR)/, $(LIB_SRC_FILES)) \
-	$(addprefix $(SRC_DIR)/cd_linked_list/, $(LIST_FILES)) \
+	$(addprefix $(SRC_DIR)/utils/, $(UTILS_FILES)) \
 	$(addprefix $(SRC_DIR)/cd_linked_list/list_utils/, $(LIST_UTILS_FILES)) \
-	$(addprefix $(SRC_DIR)/printf/, $(PRINTF_FILES)) \
-	$(addprefix $(SRC_DIR)/utils/, $(UTILS_FILES))
+	$(addprefix $(SRC_DIR)/cd_linked_list/, $(LIST_FILES)) \
+	$(addprefix $(SRC_DIR)/op_optimiser/, $(OPTIMISER_FILES)) \
+	$(addprefix $(SRC_DIR)/printf/, $(PRINTF_FILES))
 
 MAIN_OBJ = $(MAIN_SRC:.c=.o)
 LIB_OBJ = $(LIB_SRC:.c=.o)

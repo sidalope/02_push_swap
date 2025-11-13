@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 18:58:28 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/06 22:40:43 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/13 21:44:41 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ int	main(int argc, char *argv[])
 	argc--;
 	if (!init(argc, argv, &stacks))
 		return (1);
-	// print_ranks(&stacks);
 	if (!is_sorted(stacks.a))
 		halfway_sort(&stacks);
 	if (!is_sorted(stacks.a))
-	{
 		ft_printf("Error sorting");
-	}
+	// print_lists(&stacks);
+	naive_pass(&stacks);
+	// print_lists(&stacks);
 	print_log(stacks.log->prev, stacks.log->prev);
 	clean_up(&stacks);
 	return (0);
