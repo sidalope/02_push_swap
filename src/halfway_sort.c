@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 10:37:26 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/06 20:52:53 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/15 10:15:14 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ static void	position_a_final(t_stacks *stacks)
 		while (stacks->a->rank != 0)
 			rrotate(&(stacks->a), stacks);
 	}
-
 }
 
 static void	subsort_b(t_stacks *stacks, int min, int max)

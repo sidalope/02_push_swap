@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 14:43:42 by abisiani          #+#    #+#             */
-/*   Updated: 2025/11/15 06:35:55 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/15 10:14:24 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,3 @@ void	print_log(t_list_node *current, t_list_node *head)
 		return ;
 	print_log(current->prev, head);
 }
-
-// void	print_lst_sizes(t_stacks *stacks)
-// {
-// 	if (!stacks->list_sizes_min || !stacks->list_sizes_mid || !stacks->list_sizes_max)
-// 		return ;
-// 	ft_printf("min: ");
-// 	print_lst_content(stacks->list_sizes_min, stacks->list_sizes_min);
-// 	ft_printf("mid: ");
-// 	print_lst_content(stacks->list_sizes_mid, stacks->list_sizes_mid);
-// 	ft_printf("max: ");
-// 	print_lst_content(stacks->list_sizes_max, stacks->list_sizes_max);
-// 	ft_printf("\n");
-// }
