@@ -6,39 +6,37 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:59:54 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/13 21:09:43 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/15 08:00:40 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	delete_nodes(t_list_node **lst)
+int	delete_nodes(t_list_node **lst)
 {
-	t_list_node	*new;
 	t_list_node	*next;
 
-	new = (*lst)->next->next;
+	if (!lst || !*lst || ft_lstsize(*lst, 0, *lst) < 2)
+		return (ps_error(), 0);
 	next = (*lst)->next;
-	// if (ft_lstsize(*lst, 0, *lst) == 2)
-	// 	new = NULL;
-	ft_lstpop(&(next));
+	ft_lstpop(&next);
 	ft_lstpop(lst);
-	*lst = new;
+	return (1);
 }
 
-void	replace_nodes(t_list_node **lst, t_list_node *new)
+int	replace_nodes(t_list_node **lst, t_list_node *new)
 {
 	t_list_node	*current;
 	t_list_node	*next;
 
-	if (!lst || !*lst || !new)
-		return ;
+	if (!lst || !*lst || !new || ft_lstsize(*lst, 0, *lst) < 2)
+		return (ps_error(), 0);
 	current = *lst;
 	next = (*lst)->next;
-	*lst = next->next;
+	ft_lstadd_front(lst, new);
 	ft_lstpop(&(next));
 	ft_lstpop(&(current));
-	ft_lstadd_front(lst, new);
+	return (1);
 }
 
 int	rotate_log(t_list_node **lst)
@@ -46,5 +44,13 @@ int	rotate_log(t_list_node **lst)
 	if (!lst || !*lst)
 		return (-1);
 	*lst = (*lst)->next;
+	return (0);
+}
+
+int	rrotate_log(t_list_node **lst)
+{
+	if (!lst || !*lst)
+		return (-1);
+	*lst = (*lst)->prev;
 	return (0);
 }

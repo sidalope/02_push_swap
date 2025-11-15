@@ -2,10 +2,32 @@
 
 # Fully AI written quick acceptance tester
 # Also runs second AI script for visualizing overall performance as bar graph and scatter plot
-# Usage: ./test_push_swap.sh [max_size] [num_tests_per_size]
+# Usage: ./test_push_swap.sh [min_size-max_size|max_size] [interval] [num_tests_per_size]
+# Examples:
+#   ./test_push_swap.sh 200-300 20 3   # Test sizes 200, 220, 240, 260, 280, 300 with 3 tests each
+#   ./test_push_swap.sh 200-300 3      # Test sizes 200-300 (step 1), 3 tests each
+#   ./test_push_swap.sh 500 5          # Test sizes 1 to 500 (step 1), 5 tests each
 
-MAX_SIZE=${1:-500}
-TESTS_PER_SIZE=${2:-5}
+# Parse range argument
+if [[ "$1" =~ ^([0-9]+)-([0-9]+)$ ]]; then
+    MIN_SIZE=${BASH_REMATCH[1]}
+    MAX_SIZE=${BASH_REMATCH[2]}
+else
+    MIN_SIZE=1
+    MAX_SIZE=${1:-500}
+fi
+
+# Parse interval and num_tests_per_size
+# If only 2 args provided, second arg is num_tests_per_size (interval=1)
+# If 3 args provided, second arg is interval, third is num_tests_per_size
+if [ -n "$3" ]; then
+    INTERVAL=${2:-1}
+    TESTS_PER_SIZE=${3:-5}
+else
+    INTERVAL=1
+    TESTS_PER_SIZE=${2:-5}
+fi
+
 PUSH_SWAP="./push_swap"
 CHECKER="./checker_linux"
 
@@ -26,8 +48,18 @@ CSV_FILE="test_push_swap_detailed.csv"
 CSV_SIZES=""
 CSV_OPERATIONS=""
 
+# Build the project first
+echo -e "${BLUE}Building project...${NC}"
+make test
+if [ $? -ne 0 ]; then
+    echo -e "${RED}Build failed! Exiting.${NC}"
+    exit 1
+fi
+echo -e "${GREEN}Build successful!${NC}"
+echo ""
+
 echo -e "${BLUE}=== Push Swap Tester ===${NC}"
-echo "Testing sizes from 0 to $MAX_SIZE"
+echo "Testing sizes from $MIN_SIZE to $MAX_SIZE (interval: $INTERVAL)"
 echo "Running $TESTS_PER_SIZE tests per size"
 echo ""
 
@@ -142,7 +174,7 @@ fi
 # Test random lists of various sizes
 echo -e "${BLUE}Testing random lists:${NC}"
 
-for size in $(seq 1 $MAX_SIZE); do
+for size in $(seq $MIN_SIZE $INTERVAL $MAX_SIZE); do
     for test_num in $(seq 1 $TESTS_PER_SIZE); do
         ARG=$(generate_random_list $size)
         test_list $size $test_num "$ARG"
@@ -181,14 +213,6 @@ else
     ((FAILED_TESTS++))
 fi
 ((TOTAL_TESTS++))
-# Add to CSV
-if [ -n "$CSV_SIZES" ]; then
-    CSV_SIZES="$CSV_SIZES, 5"
-    CSV_OPERATIONS="$CSV_OPERATIONS, $operations_count"
-else
-    CSV_SIZES="5"
-    CSV_OPERATIONS="$operations_count"
-fi
 
 # Test with reverse sorted list
 echo -n "Reverse sorted (5 4 3 2 1): "
@@ -207,9 +231,6 @@ else
     ((FAILED_TESTS++))
 fi
 ((TOTAL_TESTS++))
-# Add to CSV
-CSV_SIZES="$CSV_SIZES, 5"
-CSV_OPERATIONS="$CSV_OPERATIONS, $operations_count"
 
 # Test with negative numbers
 echo -n "With negatives (-3 -1 0 2 4): "
@@ -228,9 +249,6 @@ else
     ((FAILED_TESTS++))
 fi
 ((TOTAL_TESTS++))
-# Add to CSV
-CSV_SIZES="$CSV_SIZES, 5"
-CSV_OPERATIONS="$CSV_OPERATIONS, $operations_count"
 
 # Summary
 echo ""
