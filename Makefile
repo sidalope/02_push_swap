@@ -6,7 +6,7 @@
 #    By: abisani <abisani@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/07 22:59:16 by abisiani          #+#    #+#              #
-#    Updated: 2025/11/13 19:34:09 by abisani          ###   ########.fr        #
+#    Updated: 2025/11/17 20:38:55 by abisani          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,10 +26,13 @@ SRC_DIR = src
 MAIN_SRC_FILES = main.c
 LIB_SRC_FILES = halfway_sort.c init.c halfway_sort_utils.c
 
+CHUNK_SORT_FILES = chunk_sort.c chunk_split.c
+
 LIST_FILES = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstpop.c \
 	ft_lstclear.c ft_lstiter.c
 
-LIST_UTILS_FILES = push.c rotate.c swap.c del.c print_content.c is_sorted.c
+LIST_UTILS_FILES = push.c rotate.c swap.c del.c print_content.c is_sorted.c \
+	print_chunks.c
 
 OPTIMISER_FILES = log.c naive_optimisation.c utils.c
 
@@ -41,6 +44,7 @@ UTILS_FILES = abs.c ft_atoi.c ft_isnumber.c  ps_error.c ft_strncmp.c \
 
 MAIN_SRC = $(addprefix $(SRC_DIR)/, $(MAIN_SRC_FILES))
 LIB_SRC = $(addprefix $(SRC_DIR)/, $(LIB_SRC_FILES)) \
+	$(addprefix $(SRC_DIR)/, $(CHUNK_SORT_FILES)) \
 	$(addprefix $(SRC_DIR)/utils/, $(UTILS_FILES)) \
 	$(addprefix $(SRC_DIR)/cd_linked_list/list_utils/, $(LIST_UTILS_FILES)) \
 	$(addprefix $(SRC_DIR)/cd_linked_list/, $(LIST_FILES)) \
@@ -72,9 +76,9 @@ re: fclean all
 test: re
 	./tests/tests.sh
 
+test_chunk: re
+	./push_swap $$(cat tests/random_100.txt)
+
 unit_tests: $(LIB_NAME) tests/unit_tests.c
 	$(CC) -g $(CFLAGS) -o $(NAME)_unit_test tests/unit_tests.c -L. -lpushswap
-	./$(NAME)_unit_test $$(cat tests/random_10.txt)
-
-# test_wrap: re
-# 	$(CC) $(CFLAGS) -rdynamic -Wl,--wrap=malloc -Wl,--wrap=free -o $(NAME)_memory_test $(MAIN_OBJ) -L. -lpushswap
+	./$(NAME)_unit_test $$(cat tests/random_100.txt) 2>&1
