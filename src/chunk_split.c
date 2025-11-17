@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 17:16:29 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/17 20:39:53 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/17 22:13:04 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	calculate_cheapest(t_stacks *stacks, int high_chunk, int low_chunk)
 }
 
 // Add look-ahead to two or three ops?
-static void	send_cheapest(t_stacks *stacks, int rotations)
+static void	send_cheapest(t_stacks *stacks, int rotations, int low_chunk)
 {
 	while (rotations)
 	{
@@ -55,6 +55,8 @@ static void	send_cheapest(t_stacks *stacks, int rotations)
 		}
 	}
 	push(&(stacks->a), &(stacks->b), stacks);
+	if (stacks->b->chunk == low_chunk)
+		rotate(&(stacks->b), stacks);
 }
 
 static void	send_chunks(t_stacks *stacks, int high_chunk, int low_chunk,
@@ -71,10 +73,10 @@ static void	send_chunks(t_stacks *stacks, int high_chunk, int low_chunk,
 	{
 		// ft_printf("CHUNKS (send): %i, %i\n", high_chunk, low_chunk);
 		rotations = calculate_cheapest(stacks, high_chunk, low_chunk);
-		send_cheapest(stacks, rotations);
+		send_cheapest(stacks, rotations, low_chunk);
 		n_pushes++;
 	}
-	print_chunks(stacks->a, stacks);
+	// print_chunks(stacks->a, stacks);
 }
 
 // Send all chunk pairs to b, leaving the last one in a
@@ -92,7 +94,7 @@ int	split_pairs(t_stacks *stacks)
 	while (low_chunk >= 0)
 	{
 		ft_printf("CHUNKS: %i, %i\n", high_chunk, low_chunk);
-		print_chunks(stacks->a, stacks);
+		// print_chunks(stacks->a, stacks);
 		ft_printf("-\n");
 		send_chunks(stacks, high_chunk, low_chunk, size_a);
 		high_chunk++;
