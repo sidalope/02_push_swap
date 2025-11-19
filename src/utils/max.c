@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   max.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/05 11:26:08 by abisiani          #+#    #+#             */
-/*   Updated: 2025/11/19 18:31:40 by abisani          ###   ########.fr       */
+/*   Created: 2025/11/19 11:20:49 by abisani           #+#    #+#             */
+/*   Updated: 2025/11/19 16:07:28 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_list_node	*ft_lstnew(void *content)
+int	max(int a, int b)
 {
-	t_list_node	*new_node;
-
-	new_node = (t_list_node *) malloc(sizeof(t_list_node));
-	if (!new_node)
-		return (NULL);
-	new_node->content = content;
-	new_node->rank = 0;
-	new_node->chunk = -1;
-	new_node->next = NULL;
-	new_node->prev = NULL;
-	new_node->costs = NULL;
-	return (new_node);
+	if (a > b)
+		return (a);
+	return (b);
 }

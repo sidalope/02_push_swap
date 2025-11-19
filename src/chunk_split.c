@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 17:16:29 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/17 22:13:04 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/19 21:01:18 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static int	calculate_cheapest(t_stacks *stacks, int high_chunk, int low_chunk)
 		return (rotations);
 	while (curr->next != stacks->a)
 	{
-		// ft_printf("CHUNKS (calc): %i, %i\n", high_chunk, low_chunk);
 		if (curr->chunk == high_chunk || curr->chunk == low_chunk)
 			return (rotations);
 		else if (prev->chunk == low_chunk || prev->chunk == high_chunk)
@@ -42,7 +41,6 @@ static void	send_cheapest(t_stacks *stacks, int rotations, int low_chunk)
 {
 	while (rotations)
 	{
-		// ft_printf("ROTATE\n");
 		if (rotations > 0)
 		{
 			rotate(&(stacks->a), stacks);
@@ -71,12 +69,10 @@ static void	send_chunks(t_stacks *stacks, int high_chunk, int low_chunk,
 	n_pushes = 0;
 	while (n_pushes < chunk_size * 2)
 	{
-		// ft_printf("CHUNKS (send): %i, %i\n", high_chunk, low_chunk);
 		rotations = calculate_cheapest(stacks, high_chunk, low_chunk);
 		send_cheapest(stacks, rotations, low_chunk);
 		n_pushes++;
 	}
-	// print_chunks(stacks->a, stacks);
 }
 
 // Send all chunk pairs to b, leaving the last one in a
@@ -93,9 +89,6 @@ int	split_pairs(t_stacks *stacks)
 		return (ps_error(), 0);
 	while (low_chunk >= 0)
 	{
-		ft_printf("CHUNKS: %i, %i\n", high_chunk, low_chunk);
-		// print_chunks(stacks->a, stacks);
-		ft_printf("-\n");
 		send_chunks(stacks, high_chunk, low_chunk, size_a);
 		high_chunk++;
 		low_chunk--;

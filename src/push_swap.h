@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:24:26 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/17 20:39:13 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/19 22:10:42 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,15 @@
 # include <stdio.h>
 # include <limits.h>
 
+typedef struct s_costs_tuple
+{
+	int					rank;
+	int					rot;
+	int					rrot;
+	int					rot_b;
+	int					min;
+}						t_costs_tuple;
+
 typedef struct s_list_node
 {
 	void				*content;
@@ -25,6 +34,7 @@ typedef struct s_list_node
 	int					chunk;
 	struct s_list_node	*next;
 	struct s_list_node	*prev;
+	t_costs_tuple		*costs;
 }						t_list_node;
 
 typedef struct s_stacks
@@ -69,6 +79,7 @@ int				ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t			ft_strlcpy(char *dst, const char *src, size_t size);
 char			*ft_strjoin(char const *s1, char const *s2);
 size_t			ft_strlen(const char *s);
+int				max(int a, int b);
 
 // Halfway sort utils
 void			send_bottom_ranks(t_stacks *stacks);
@@ -89,6 +100,9 @@ int				rrotate_log(t_list_node **lst);
 
 // Chunk sort
 int				split_pairs(t_stacks *stacks);
+int				merge_b(t_stacks *stacks);
+int				execute_ops(t_stacks *stacks, t_costs_tuple *tup);
+
 
 // Sorting algos
 int				chunk_sort(t_stacks *stacks);

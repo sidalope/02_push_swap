@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 13:19:25 by abisiani          #+#    #+#             */
-/*   Updated: 2025/10/21 15:08:23 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/19 20:45:30 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	ft_lstclear(t_list_node **current, t_list_node *head)
 	if (!current || !*current || !head)
 		return ;
 	next = (*current)->next;
+	if ((*current)->costs)
+		free((*current)->costs);
 	free(*current);
 	*current = NULL;
 	if (next == head)

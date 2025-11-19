@@ -8,6 +8,7 @@
 ARG=$(python3 -c "import random; nums=set();
 while len(nums)<100: nums.add(random.randint(-2147483648, 2147483647));
 print(' '.join(map(str, nums)))")
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./push_swap $ARG | head -100
 ./push_swap $ARG
 ./push_swap $ARG | wc -l
-./push_swap $ARG | ./checker_linux $ARG
+#./push_swap $ARG | ./checker_linux $ARG

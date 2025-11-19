@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 18:58:28 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/17 20:39:29 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/19 21:00:57 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,11 @@ int	main(int argc, char *argv[])
 	argc--;
 	if (!init(argc, argv, &stacks))
 		return (1);
-	// print_chunks(stacks.a, &stacks);
 	if (!is_sorted(stacks.a))
 		chunk_sort(&stacks);
-	ft_printf("\n\n-- AFTER SPLIT --\n\n");
-	print_chunks(stacks.a, &stacks);
-	if (!is_sorted(stacks.a))
-		ft_printf("Error sorting\n");
+	// print_chunks(stacks.b, &stacks);
+	// if (!is_sorted(stacks.a))
+	// 	ft_printf("Error sorting\n");
 	// fp = fopen("before.txt", "w");
 	// write_log_file(fp, stacks.log->prev, stacks.log->prev);
 	// fclose(fp);
@@ -57,6 +55,8 @@ int	main(int argc, char *argv[])
 	// write_log_file(fp, stacks.log->prev, stacks.log->prev);
 	// fclose(fp);
 	// print_log(stacks.log->prev, stacks.log->prev);
+	print_ranks(&stacks);
+	ft_printf("\n");
 	clean_up(&stacks);
 	return (0);
 }
