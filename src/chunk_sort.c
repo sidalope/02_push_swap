@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 16:43:15 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/19 22:46:03 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/19 23:24:15 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,22 +85,22 @@ static void	position_a(t_stacks *stacks)
 
 int	chunk_sort(t_stacks *stacks)
 {
-	ft_printf("\n\n-- BEFORE SPLIT --\n");
-	print_ranks(stacks);
+	// ft_printf("\n\n-- BEFORE SPLIT --\n");
+	// print_ranks(stacks);
 	if (!split_pairs(stacks))
 		return (0);
-	ft_printf("\n\n-- AFTER SPLIT --\n");
-	print_ranks(stacks);
+	// ft_printf("\n\n-- AFTER SPLIT --\n");
+	// print_ranks(stacks);
 	if (push_last_chunk(stacks) < 0)
 		return (0);
-	ft_printf("\n\n-- AFTER LAST PUSH --\n");
-	print_ranks(stacks);
+	// ft_printf("\n\n-- AFTER LAST PUSH --\n");
+	// print_ranks(stacks);
 	if (!merge_b(stacks))
 		return (0);
-	ft_printf("\n\n-- AFTER MERGE --\n");
-	print_ranks(stacks);
+	// ft_printf("\n\n-- AFTER MERGE --\n");
+	// print_ranks(stacks);
 	position_a(stacks);
-	ft_printf("\n\n-- AFTER REPOSITION --\n");
-	print_ranks(stacks);
+	// ft_printf("\n\n-- AFTER REPOSITION --\n");
+	// print_ranks(stacks);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 21:07:00 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/19 22:47:04 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/20 00:30:42 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,53 +26,29 @@
 // 	} while (c != start);
 // }
 
-static void	calc_min_ops(t_costs_tuple *tup)
+static void	get_target_a_min(t_stacks *stacks, int size_a, t_costs_tuple *costs)
 {
-	if (!tup->rot_b)
-	{
-		if (tup->rot < -tup->rrot)
-			tup->min = tup->rot;
-		else
-			tup->min = -tup->rrot;
-	}
-	else if (tup->rot_b > 0)
-	{
-		if (max(tup->rot, tup->rot_b) > tup->rot_b + -tup->rrot)
-			tup->min = tup->rot_b + -tup->rrot;
-		else
-			tup->min = max(tup->rot, tup->rot_b);
-	}
-	else if (tup->rot_b < 0)
-	{
-		if (max(-tup->rot_b, -tup->rrot) > -tup->rot_b + tup->rot)
-			tup->min = -tup->rot_b + tup->rot;
-		else
-			tup->min = max(tup->rot, tup->rot_b);
-	}
-}
+	int			rotations;
+	t_list_node	*curr;
+	int			min_rank;
+	int			min_pos;
 
-// Looks through b and finds the cheapest element to push
-// return the costs tuple of the element
-// use that tuple to execute the move
-static t_costs_tuple	*find_cheapest(t_stacks *stacks)
-{
-	t_list_node		*curr;
-	t_costs_tuple	*cheapest;
-
-	if (!stacks || !stacks->b)
-		return (0);
-	curr = stacks->b;
-	cheapest = curr->costs;
-	while (1)
+	rotations = 0;
+	curr = stacks->a;
+	min_rank = INT_MAX;
+	min_pos = 0;
+	while (rotations < size_a)
 	{
-		calc_min_ops(curr->costs);
-		if (curr->costs->min < cheapest->min)
-			cheapest = curr->costs;
+		if (curr->rank < min_rank)
+		{
+			min_rank = curr->rank;
+			min_pos = rotations;
+		}
 		curr = curr->next;
-		if (curr == stacks->b)
-			break ;
+		rotations++;
 	}
-	return (cheapest);
+	costs->rot = min_pos;
+	costs->rrot = min_pos - size_a;
 }
 
 // takes a rank and finds the smallest rank in a that's bigger than its argument
@@ -91,8 +67,6 @@ static t_costs_tuple	*get_target_a(t_stacks *stacks, int size_a, int rank_b)
 		return (ps_error(), NULL);
 	costs->rank = INT_MAX;
 	costs->rot_b = 0;
-	costs->rot = 0;
-	costs->rrot = 0;
 	while (rotations < size_a)
 	{
 		if (curr->rank < costs->rank && curr->rank > rank_b)
@@ -104,6 +78,8 @@ static t_costs_tuple	*get_target_a(t_stacks *stacks, int size_a, int rank_b)
 		curr = curr->next;
 		rotations++;
 	}
+	if (costs->rank == INT_MAX)
+		get_target_a_min(stacks, size_a, costs);
 	return (costs);
 }
 
@@ -131,11 +107,10 @@ static int	calculate_costs_b(t_stacks *stacks)
 		if (!curr->costs)
 			return (0);
 		if (i < size_b / 2)
-			curr->costs->rot_b = i;
+			curr->costs->rot_b = i++;
 		else
-			curr->costs->rot_b = i - size_b;
+			curr->costs->rot_b = i++ - size_b;
 		curr = curr->next;
-		i++;
 	}
 	return (1);
 }
@@ -149,15 +124,10 @@ int	merge_b(t_stacks *stacks)
 		return (ps_error(), 0);
 	while (stacks->b)
 	{
-		// ft_printf("MARK");
 		if (!calculate_costs_b(stacks))
 			return (0);
-		// ft_printf("MARK");
-		// print_costs(stacks);
 		cheapest = find_cheapest(stacks);
-		// check there is a tup
 		execute_ops(stacks, cheapest);
-		// ft_printf("MARK");
 	}
 	return (1);
 }

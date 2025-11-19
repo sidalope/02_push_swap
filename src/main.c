@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 18:58:28 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/19 21:00:57 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/20 00:31:10 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ int	main(int argc, char *argv[])
 	// fp = fopen("before.txt", "w");
 	// write_log_file(fp, stacks.log->prev, stacks.log->prev);
 	// fclose(fp);
-	// naive_pass(&stacks);
 	// fp = fopen("after.txt", "w");
 	// write_log_file(fp, stacks.log->prev, stacks.log->prev);
 	// fclose(fp);
-	// print_log(stacks.log->prev, stacks.log->prev);
-	print_ranks(&stacks);
-	ft_printf("\n");
+	naive_pass(&stacks);
+	print_log(stacks.log->prev, stacks.log->prev);
+	// print_ranks(&stacks);
+	// ft_printf("\n");
 	clean_up(&stacks);
 	return (0);
 }

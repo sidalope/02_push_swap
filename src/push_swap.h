@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:24:26 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/19 22:10:42 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/19 23:50:13 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ int				rrotate_log(t_list_node **lst);
 // Chunk sort
 int				split_pairs(t_stacks *stacks);
 int				merge_b(t_stacks *stacks);
+t_costs_tuple	*find_cheapest(t_stacks *stacks);
 int				execute_ops(t_stacks *stacks, t_costs_tuple *tup);
 
 
