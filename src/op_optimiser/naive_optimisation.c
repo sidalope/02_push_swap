@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 10:39:36 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/15 08:50:19 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/20 01:08:59 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,9 @@ static int	delete_pass(t_stacks *stacks)
 	return (1);
 }
 
-void	naive_pass(t_stacks *stacks)
+int	naive_pass(t_stacks *stacks)
 {
-	combine_pass(stacks);
-	delete_pass(stacks);
+	if (!combine_pass(stacks) || !delete_pass(stacks))
+		return (0);
+	return (1);
 }

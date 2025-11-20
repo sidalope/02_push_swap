@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:24:26 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/19 23:50:13 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/20 01:08:16 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int				check_and_rank(t_list_node *lst, t_list_node *head);
 
 // Optimiser
 void			log_op(t_list_node **log, char *operation);
-void			naive_pass(t_stacks *stacks);
+int			naive_pass(t_stacks *stacks);
 int				delete_nodes(t_list_node **lst);
 int				replace_nodes(t_list_node **lst, t_list_node *new);
 int				rotate_log(t_list_node **lst);
