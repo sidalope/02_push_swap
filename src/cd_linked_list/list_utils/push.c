@@ -6,11 +6,26 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 14:09:34 by abisiani          #+#    #+#             */
-/*   Updated: 2025/11/06 22:34:53 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/20 02:02:00 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../push_swap.h"
+
+static int	log_push(t_stacks *stacks, t_list_node **src)
+{
+	if (*src == stacks->a)
+	{
+		if (!log_op(&(stacks->log), "pb"))
+			return (ps_error(), 0);
+	}
+	else
+	{
+		if (!log_op(&(stacks->log), "pa"))
+			return (ps_error(), 0);
+	}
+	return (1);
+}
 
 int	push(t_list_node **src, t_list_node **dest,\
 			t_stacks *stacks)
@@ -20,10 +35,8 @@ int	push(t_list_node **src, t_list_node **dest,\
 
 	if (!src || !*src)
 		return (-1);
-	if (*src == stacks->a)
-		log_op(&(stacks->log), "pb");
-	else
-		log_op(&(stacks->log), "pa");
+	if (!log_push(stacks, src))
+		return (0);
 	if ((*src)->next == *src)
 	{
 		ft_lstadd_front(dest, *src);

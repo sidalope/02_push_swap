@@ -6,7 +6,7 @@
 #    By: abisani <abisani@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/07 22:59:16 by abisiani          #+#    #+#              #
-#    Updated: 2025/11/19 23:53:21 by abisani          ###   ########.fr        #
+#    Updated: 2025/11/20 01:47:39 by abisani          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ CHUNK_SORT_FILES = chunk_sort.c chunk_split.c chunk_merge.c \
 LIST_FILES = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstpop.c \
 	ft_lstclear.c ft_lstiter.c
 
-LIST_UTILS_FILES = push.c rotate.c swap.c del.c print_content.c is_sorted.c \
+LIST_UTILS_FILES = push.c rotate.c swap.c print_content.c is_sorted.c \
 	print_chunks.c
 
 OPTIMISER_FILES = log.c naive_optimisation.c utils.c

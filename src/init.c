@@ -6,13 +6,12 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:52:41 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/17 22:28:28 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/20 01:39:24 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// TODO: Bucket size should not be < 5 or 3 (base case)??
 int	init_num_chunks(t_stacks *stacks, int op_bucket_size)
 {
 	int	n_chunks;
@@ -21,10 +20,15 @@ int	init_num_chunks(t_stacks *stacks, int op_bucket_size)
 	n_chunks = 0;
 	if (!stacks)
 		return (0);
-	else
-		size_a = ft_lstsize(stacks->a, 0, stacks->a);
+	size_a = ft_lstsize(stacks->a, 0, stacks->a);
 	if (op_bucket_size)
-		return (stacks->n_chunks = size_a / op_bucket_size);
+		n_chunks = size_a / op_bucket_size;
+	else if (size_a < 6)
+		n_chunks = size_a;
+	else if (size_a < 10)
+		n_chunks = size_a / 2;
+	else if (size_a < 15)
+		n_chunks = size_a / 3;
 	else
 		n_chunks = size_a / 10;
 	if (n_chunks % 2 == 0)
@@ -89,18 +93,21 @@ static int	assign_chunk(t_list_node *curr, t_list_node *head, int n_chunks,
 
 int	init(int argc, char *argv[], t_stacks *stacks)
 {
-	int		i;
+	int			i;
+	t_list_node	*new_node;
 
 	i = argc;
+	new_node = NULL;
 	stacks->a = NULL;
 	stacks->b = NULL;
 	stacks->log = NULL;
 	stacks->n_chunks = 0;
 	while (argc > 0)
 	{
-		if (!ft_isnumber(argv[argc]))
+		new_node = ft_lstnew(argv[argc]);
+		if (!ft_isnumber(argv[argc]) || !new_node)
 			return (ps_error(), 0);
-		ft_lstadd_front(&stacks->a, ft_lstnew(argv[argc]));
+		ft_lstadd_front(&stacks->a, new_node);
 		argc--;
 	}
 	if (!init_num_chunks(stacks, 0)

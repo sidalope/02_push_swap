@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:24:26 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/20 01:08:16 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/20 01:29:27 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int				push(t_list_node **src, t_list_node **dest, t_stacks *stacks);
 int				swap(t_list_node **lst, t_stacks *stacks);
 int				rotate(t_list_node **lst, t_stacks *stacks);
 int				rrotate(t_list_node **lst, t_stacks *stacks);
-void			del(t_list_node *node);
 void			print_lst_content(t_list_node *current, t_list_node *head);
 void			print_lst_ranks(t_list_node *current, t_list_node *head);
 int				is_sorted(t_list_node *lst);
@@ -91,8 +90,8 @@ int				init(int argc, char *argv[], t_stacks *stacks);
 int				check_and_rank(t_list_node *lst, t_list_node *head);
 
 // Optimiser
-void			log_op(t_list_node **log, char *operation);
-int			naive_pass(t_stacks *stacks);
+int				log_op(t_list_node **log, char *operation);
+int				naive_pass(t_stacks *stacks);
 int				delete_nodes(t_list_node **lst);
 int				replace_nodes(t_list_node **lst, t_list_node *new);
 int				rotate_log(t_list_node **lst);
