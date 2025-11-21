@@ -6,13 +6,13 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:52:41 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/20 01:39:24 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/21 13:46:38 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	init_num_chunks(t_stacks *stacks, int op_bucket_size)
+int	init_num_chunks(t_stacks *stacks)
 {
 	int	n_chunks;
 	int	size_a;
@@ -21,16 +21,18 @@ int	init_num_chunks(t_stacks *stacks, int op_bucket_size)
 	if (!stacks)
 		return (0);
 	size_a = ft_lstsize(stacks->a, 0, stacks->a);
-	if (op_bucket_size)
-		n_chunks = size_a / op_bucket_size;
-	else if (size_a < 6)
-		n_chunks = size_a;
-	else if (size_a < 10)
-		n_chunks = size_a / 2;
-	else if (size_a < 15)
-		n_chunks = size_a / 3;
+	if (size_a <= 4)
+		n_chunks = 1;
+	else if (size_a <= 20)
+		n_chunks = 2;
+	else if (size_a <= 50)
+		n_chunks = 3;
+	else if (size_a <= 100)
+		n_chunks = 7;
+	else if (size_a <= 300)
+		n_chunks = 9;
 	else
-		n_chunks = size_a / 10;
+		n_chunks = 11;
 	if (n_chunks % 2 == 0)
 		n_chunks++;
 	return (stacks->n_chunks = n_chunks);
@@ -110,7 +112,7 @@ int	init(int argc, char *argv[], t_stacks *stacks)
 		ft_lstadd_front(&stacks->a, new_node);
 		argc--;
 	}
-	if (!init_num_chunks(stacks, 0)
+	if (!init_num_chunks(stacks)
 		|| !check_and_rank(stacks->a, stacks->a)
 		|| !assign_chunk(stacks->a, stacks->a, stacks->n_chunks, i))
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 16:43:15 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/19 23:24:15 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/21 14:20:37 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,11 @@ static int	get_min_rank(t_list_node *lst)
 //	in the right order. It will leave at least 
 //	return the number of elements pushed to b (the size of chunk at the 
 //		top of b)
-static int	push_last_chunk(t_stacks *stacks)
+static void	push_last_chunk(t_stacks *stacks)
 {
-	int		nodes_pushed;
 	int		size_a;
 	int		min_rank;
 
-	nodes_pushed = -1;
 	size_a = ft_lstsize(stacks->a, 0, stacks->a);
 	min_rank = get_min_rank(stacks->a);
 	while (size_a-- > 0)
@@ -51,16 +49,8 @@ static int	push_last_chunk(t_stacks *stacks)
 			min_rank++;
 		}
 		else
-		{
 			push(&(stacks->a), &(stacks->b), stacks);
-			if (nodes_pushed < 0)
-				nodes_pushed = 0;
-			nodes_pushed++;
-		}
 	}
-	if (nodes_pushed < 0)
-		return (ps_error(), nodes_pushed);
-	return (nodes_pushed);
 }
 
 // Rotate a with it's smallest rank on top
@@ -91,8 +81,7 @@ int	chunk_sort(t_stacks *stacks)
 		return (0);
 	// ft_printf("\n\n-- AFTER SPLIT --\n");
 	// print_ranks(stacks);
-	if (push_last_chunk(stacks) < 0)
-		return (0);
+	push_last_chunk(stacks);
 	// ft_printf("\n\n-- AFTER LAST PUSH --\n");
 	// print_ranks(stacks);
 	if (!merge_b(stacks))
