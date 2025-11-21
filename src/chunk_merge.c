@@ -6,25 +6,11 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 21:07:00 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/20 00:30:42 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/21 22:29:21 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// void	print_costs(t_stacks *stacks)
-// {
-// 	t_list_node	*start;
-// 	t_list_node	*c;
-
-// 	start = stacks->b;
-// 	c = stacks->b;
-// 	ft_printf("COSTS:\n");
-// 	do {
-//     ft_printf("rot: %i, rrot: %i, rot b: %i \n", c->costs->rot, c->costs->rrot, c->costs->rot_b);
-//     	c = c->next;
-// 	} while (c != start);
-// }
 
 static void	get_target_a_min(t_stacks *stacks, int size_a, t_costs_tuple *costs)
 {
@@ -51,9 +37,6 @@ static void	get_target_a_min(t_stacks *stacks, int size_a, t_costs_tuple *costs)
 	costs->rrot = min_pos - size_a;
 }
 
-// takes a rank and finds the smallest rank in a that's bigger than its argument
-// returns positive number for rotations from the top, or negative for rrotations
-// can return tuple with pos and negative??
 static t_costs_tuple	*get_target_a(t_stacks *stacks, int size_a, int rank_b)
 {
 	int				rotations;
@@ -131,4 +114,3 @@ int	merge_b(t_stacks *stacks)
 	}
 	return (1);
 }
-

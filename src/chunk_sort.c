@@ -6,14 +6,12 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 16:43:15 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/21 14:20:37 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/21 22:02:14 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// get the largest rank in the current list. Is this r. better than tracking
-// //	the size of the set?
 static int	get_min_rank(t_list_node *lst)
 {
 	int			lst_size;
@@ -30,10 +28,6 @@ static int	get_min_rank(t_list_node *lst)
 	return (min);
 }
 
-// push the odd, odd sized chunk left in a, rotating elements that happen
-//	in the right order. It will leave at least 
-//	return the number of elements pushed to b (the size of chunk at the 
-//		top of b)
 static void	push_last_chunk(t_stacks *stacks)
 {
 	int		size_a;
@@ -53,7 +47,6 @@ static void	push_last_chunk(t_stacks *stacks)
 	}
 }
 
-// Rotate a with it's smallest rank on top
 static void	position_a(t_stacks *stacks)
 {
 	int		size_a;
@@ -75,21 +68,11 @@ static void	position_a(t_stacks *stacks)
 
 int	chunk_sort(t_stacks *stacks)
 {
-	// ft_printf("\n\n-- BEFORE SPLIT --\n");
-	// print_ranks(stacks);
 	if (!split_pairs(stacks))
 		return (0);
-	// ft_printf("\n\n-- AFTER SPLIT --\n");
-	// print_ranks(stacks);
 	push_last_chunk(stacks);
-	// ft_printf("\n\n-- AFTER LAST PUSH --\n");
-	// print_ranks(stacks);
 	if (!merge_b(stacks))
 		return (0);
-	// ft_printf("\n\n-- AFTER MERGE --\n");
-	// print_ranks(stacks);
 	position_a(stacks);
-	// ft_printf("\n\n-- AFTER REPOSITION --\n");
-	// print_ranks(stacks);
 	return (1);
 }

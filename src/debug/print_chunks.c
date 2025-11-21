@@ -6,11 +6,11 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 20:37:26 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/17 21:51:47 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/21 22:06:00 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../push_swap.h"
+#include "../push_swap.h"
 
 void	print_chunks(t_list_node *curr, t_stacks *stacks)
 {

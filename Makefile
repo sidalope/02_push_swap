@@ -6,7 +6,7 @@
 #    By: abisani <abisani@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/07 22:59:16 by abisiani          #+#    #+#              #
-#    Updated: 2025/11/20 01:47:39 by abisani          ###   ########.fr        #
+#    Updated: 2025/11/21 22:16:57 by abisani          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ LIB_NAME = libpushswap.a
 SRC_DIR = src
 
 MAIN_SRC_FILES = main.c
-LIB_SRC_FILES = halfway_sort.c init.c halfway_sort_utils.c
+LIB_SRC_FILES = init.c
 
 CHUNK_SORT_FILES = chunk_sort.c chunk_split.c chunk_merge.c \
 	chunk_merge_execute.c chunk_merge_utils.c
@@ -32,15 +32,14 @@ CHUNK_SORT_FILES = chunk_sort.c chunk_split.c chunk_merge.c \
 LIST_FILES = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstpop.c \
 	ft_lstclear.c ft_lstiter.c
 
-LIST_UTILS_FILES = push.c rotate.c swap.c print_content.c is_sorted.c \
-	print_chunks.c
+LIST_UTILS_FILES = push.c rotate.c swap.c print_content.c is_sorted.c
 
 OPTIMISER_FILES = log.c naive_optimisation.c utils.c
 
 PRINTF_FILES = intlen.c put_unsnbr_fd.c ft_printf.c print_c.c print_s.c \
 	print_p.c print_di.c print_u.c print_x.c print_x_cap.c ft_putnbr_fd.c
 
-UTILS_FILES = abs.c ft_atoi.c ft_isnumber.c  ps_error.c ft_strncmp.c \
+UTILS_FILES = ft_atoi.c ft_isnumber.c  ps_error.c ft_strncmp.c \
 	ft_strjoin.c ft_strlen.c max.c
 
 MAIN_SRC = $(addprefix $(SRC_DIR)/, $(MAIN_SRC_FILES))

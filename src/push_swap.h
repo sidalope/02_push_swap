@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:24:26 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/21 13:46:22 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/21 22:02:54 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,15 @@ int				push(t_list_node **src, t_list_node **dest, t_stacks *stacks);
 int				swap(t_list_node **lst, t_stacks *stacks);
 int				rotate(t_list_node **lst, t_stacks *stacks);
 int				rrotate(t_list_node **lst, t_stacks *stacks);
-void			print_lst_content(t_list_node *current, t_list_node *head);
-void			print_lst_ranks(t_list_node *current, t_list_node *head);
 int				is_sorted(t_list_node *lst);
-void			print_lists(t_stacks *stacks);
-void			print_ranks(t_stacks *stacks);
 void			print_log(t_list_node *current, t_list_node *head);
-void			print_chunks(t_list_node *curr, t_stacks *stacks);
+
+// Debug functions (moved to src/debug/ - not compiled by default)
+// void			print_lst_content(t_list_node *current, t_list_node *head);
+// void			print_lst_ranks(t_list_node *current, t_list_node *head);
+// void			print_lists(t_stacks *stacks);
+// void			print_ranks(t_stacks *stacks);
+// void			print_chunks(t_list_node *curr, t_stacks *stacks);
 
 // Utils
 int				abs(int x);
@@ -102,7 +104,6 @@ int				split_pairs(t_stacks *stacks);
 int				merge_b(t_stacks *stacks);
 t_costs_tuple	*find_cheapest(t_stacks *stacks);
 int				execute_ops(t_stacks *stacks, t_costs_tuple *tup);
-
 
 // Sorting algos
 int				chunk_sort(t_stacks *stacks);

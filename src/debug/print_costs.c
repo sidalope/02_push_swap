@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   print_costs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/13 19:19:36 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/13 19:33:15 by abisani          ###   ########.fr       */
+/*   Created: 2025/11/21 22:04:57 by abisani           #+#    #+#             */
+/*   Updated: 2025/11/21 22:11:35 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+void	print_costs(t_stacks *stacks)
 {
-	int			i;
+	t_list_node	*start;
+	t_list_node	*c;
 
-	i = 0;
-	if (size == 0)
-		return (ft_strlen(src));
-	while (--size && src[i])
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (ft_strlen(src));
+	start = stacks->b;
+	c = stacks->b;
+	ft_printf("COSTS:\n");
+	do {
+		ft_printf("rot: %i, rrot: %i, rot b: %i \n",
+				c->costs->rot, c->costs->rrot, c->costs->rot_b);
+		c = c->next;
+	} while (c != start);
 }
+

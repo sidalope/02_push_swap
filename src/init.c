@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:52:41 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/21 13:46:38 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/21 22:12:17 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ static int	assign_chunk(t_list_node *curr, t_list_node *head, int n_chunks,
 	i = n_chunks;
 	if (!head || !n_chunks)
 		return (ps_error(), 0);
-
 	while (i > 0)
 	{
 		if (curr->rank >= (size_a / n_chunks) * (i - 1))
@@ -89,7 +88,7 @@ static int	assign_chunk(t_list_node *curr, t_list_node *head, int n_chunks,
 		i--;
 	}
 	if (curr->next == head)
-		return (1);	
+		return (1);
 	return (assign_chunk(curr->next, head, n_chunks, size_a));
 }
 

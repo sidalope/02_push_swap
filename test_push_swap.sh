@@ -48,6 +48,10 @@ CSV_FILE="test_push_swap_detailed.csv"
 CSV_SIZES=""
 CSV_OPERATIONS=""
 
+# Failure logging variables
+FAILURE_LOG="test_failures.log"
+FAILURE_DETAIL_DIR="test_failures"
+
 # Build the project first
 echo -e "${BLUE}Building project...${NC}"
 make test
@@ -57,6 +61,11 @@ if [ $? -ne 0 ]; then
 fi
 echo -e "${GREEN}Build successful!${NC}"
 echo ""
+
+# Initialize failure logging
+mkdir -p "$FAILURE_DETAIL_DIR"
+echo "=== Push Swap Test Failures - $(date) ===" > "$FAILURE_LOG"
+echo "" >> "$FAILURE_LOG"
 
 echo -e "${BLUE}=== Push Swap Tester ===${NC}"
 echo "Testing sizes from $MIN_SIZE to $MAX_SIZE (interval: $INTERVAL)"
@@ -93,6 +102,48 @@ generate_random_list() {
     done
     
     echo "${numbers[@]}"
+}
+
+# Function to log test failures with detailed information
+log_failure() {
+    local size=$1
+    local test_num=$2
+    local arg_list=$3
+    local operations=$4
+    local result=$5
+    local timestamp=$(date +%Y%m%d_%H%M%S)
+    local failure_id="${size}_${test_num}_${timestamp}"
+
+    # Log summary to main log file
+    echo "[$timestamp] FAILED - Size: $size, Test: $test_num, Result: $result" >> "$FAILURE_LOG"
+    echo "  Input: $arg_list" >> "$FAILURE_LOG"
+    echo "  Operations count: $(echo "$operations" | wc -l)" >> "$FAILURE_LOG"
+    echo "" >> "$FAILURE_LOG"
+
+    # Save detailed info to separate file
+    local detail_file="$FAILURE_DETAIL_DIR/failure_${failure_id}.txt"
+    {
+        echo "=== Test Failure Details ==="
+        echo "Timestamp: $timestamp"
+        echo "Size: $size"
+        echo "Test Number: $test_num"
+        echo "Checker Result: $result"
+        echo ""
+        echo "=== Input (Arguments) ==="
+        echo "$arg_list"
+        echo ""
+        echo "=== Output (Operations) ==="
+        echo "$operations"
+        echo ""
+        echo "=== Statistics ==="
+        echo "Number of operations: $(echo "$operations" | wc -l)"
+        echo "Number of elements: $size"
+        echo ""
+        echo "=== Reproduction Command ==="
+        echo "./push_swap $arg_list | ./checker_linux $arg_list"
+    } > "$detail_file"
+
+    echo "  Detailed log: $detail_file" >> "$FAILURE_LOG"
 }
 
 # Function to test a specific list
@@ -149,11 +200,13 @@ test_list() {
     elif [ "$result" = "KO" ]; then
         echo -e "${RED}FAIL${NC}"
         echo "  List: $arg_list"
+        log_failure "$size" "$test_num" "$arg_list" "$operations" "KO"
         ((FAILED_TESTS++))
         return 1
     else
         echo -e "${RED}ERROR (unexpected output: '$result')${NC}"
         echo "  List: $arg_list"
+        log_failure "$size" "$test_num" "$arg_list" "$operations" "ERROR: $result"
         ((FAILED_TESTS++))
         return 1
     fi
@@ -256,6 +309,19 @@ echo -e "${BLUE}=== Test Summary ===${NC}"
 echo "Total tests: $TOTAL_TESTS"
 echo -e "Passed: ${GREEN}$PASSED_TESTS${NC}"
 echo -e "Failed: ${RED}$FAILED_TESTS${NC}"
+
+# Display failure log information if any tests failed
+if [ $FAILED_TESTS -gt 0 ]; then
+    echo ""
+    echo -e "${YELLOW}=== Failure Details ===${NC}"
+    echo "Main log: $FAILURE_LOG"
+    echo "Detailed logs: $FAILURE_DETAIL_DIR/"
+    echo ""
+    echo -e "${BLUE}To reproduce a failure:${NC}"
+    echo "  1. Check $FAILURE_LOG for the input"
+    echo "  2. Run: ./push_swap <input_from_log> | ./checker_linux <input_from_log>"
+    echo "  3. Or see detailed logs in $FAILURE_DETAIL_DIR/ for full commands"
+fi
 
 # Save CSV data
 echo "$CSV_SIZES" > "$CSV_FILE"
