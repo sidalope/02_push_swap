@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:24:26 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/21 22:02:54 by abisani          ###   ########.fr       */
+/*   Updated: 2025/11/21 23:48:50 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,6 @@ int				rotate(t_list_node **lst, t_stacks *stacks);
 int				rrotate(t_list_node **lst, t_stacks *stacks);
 int				is_sorted(t_list_node *lst);
 void			print_log(t_list_node *current, t_list_node *head);
-
-// Debug functions (moved to src/debug/ - not compiled by default)
-// void			print_lst_content(t_list_node *current, t_list_node *head);
-// void			print_lst_ranks(t_list_node *current, t_list_node *head);
-// void			print_lists(t_stacks *stacks);
-// void			print_ranks(t_stacks *stacks);
-// void			print_chunks(t_list_node *curr, t_stacks *stacks);
 
 // Utils
 int				abs(int x);
