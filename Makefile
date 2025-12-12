@@ -1,14 +1,14 @@
-# **************************************************************************** #
+#******************************************************************************#
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abisani <abisani@student.42.fr>            +#+  +:+       +#+         #
+#    By: abisiani <abisiani@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/07 22:59:16 by abisiani          #+#    #+#              #
-#    Updated: 2025/11/21 22:16:57 by abisani          ###   ########.fr        #
+#    Updated: 2025/12/12 17:32:26 by abisiani         ###   ########.fr        #
 #                                                                              #
-# **************************************************************************** #
+#******************************************************************************#
 
 .PHONY: all clean fclean re bonus test unit_tests
 
@@ -42,6 +42,8 @@ PRINTF_FILES = intlen.c put_unsnbr_fd.c ft_printf.c print_c.c print_s.c \
 UTILS_FILES = ft_atoi.c ft_isnumber.c  ps_error.c ft_strncmp.c \
 	ft_strjoin.c ft_strlen.c max.c
 
+DEBUG_FILES = print_chunks.c print_content.c print_costs.c
+
 MAIN_SRC = $(addprefix $(SRC_DIR)/, $(MAIN_SRC_FILES))
 LIB_SRC = $(addprefix $(SRC_DIR)/, $(LIB_SRC_FILES)) \
 	$(addprefix $(SRC_DIR)/, $(CHUNK_SORT_FILES)) \
@@ -49,7 +51,8 @@ LIB_SRC = $(addprefix $(SRC_DIR)/, $(LIB_SRC_FILES)) \
 	$(addprefix $(SRC_DIR)/cd_linked_list/list_utils/, $(LIST_UTILS_FILES)) \
 	$(addprefix $(SRC_DIR)/cd_linked_list/, $(LIST_FILES)) \
 	$(addprefix $(SRC_DIR)/op_optimiser/, $(OPTIMISER_FILES)) \
-	$(addprefix $(SRC_DIR)/printf/, $(PRINTF_FILES))
+	$(addprefix $(SRC_DIR)/printf/, $(PRINTF_FILES)) \
+	$(addprefix $(SRC_DIR)/debug/, $(DEBUG_FILES))
 
 MAIN_OBJ = $(MAIN_SRC:.c=.o)
 LIB_OBJ = $(LIB_SRC:.c=.o)
