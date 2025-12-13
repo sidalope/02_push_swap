@@ -6,12 +6,13 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 21:07:00 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/21 22:29:21 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/13 18:07:24 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/* Find position of the smallest rank in A (for the largest rank_b) */
 static void	get_target_a_min(t_stacks *stacks, int size_a, t_costs_tuple *costs)
 {
 	int			rotations;
@@ -37,6 +38,7 @@ static void	get_target_a_min(t_stacks *stacks, int size_a, t_costs_tuple *costs)
 	costs->rrot = min_pos - size_a;
 }
 
+/* Find target insertion position in A for a rank (rank_b) */
 static t_costs_tuple	*get_target_a(t_stacks *stacks, int size_a, int rank_b)
 {
 	int				rotations;
@@ -66,11 +68,12 @@ static t_costs_tuple	*get_target_a(t_stacks *stacks, int size_a, int rank_b)
 	return (costs);
 }
 
-// for every element in b
-//	get and assign its target costs
-//	get b rotation costs
-// calculate total cheapest rotations
-//	ra rb, rra rrb, rra rb, ra rrb
+/*
+** For every element in b:
+**   - Get and assign its target costs
+**   - Get b rotation costs
+**   - Calculate total cheapest rotations
+*/
 static int	calculate_costs_b(t_stacks *stacks)
 {
 	int				i;
@@ -98,6 +101,7 @@ static int	calculate_costs_b(t_stacks *stacks)
 	return (1);
 }
 
+/* Merge all elements of B with A using the next cheapest operation */
 int	merge_b(t_stacks *stacks)
 {
 	t_costs_tuple	*cheapest;

@@ -6,12 +6,13 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 23:45:31 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/19 23:49:47 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/13 18:14:40 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/* Calculate minimum operations considering rotation directions */
 static void	calc_min_ops(t_costs_tuple *tup)
 {
 	if (!tup->rot_b)
@@ -37,9 +38,12 @@ static void	calc_min_ops(t_costs_tuple *tup)
 	}
 }
 
-// Looks through b and finds the cheapest element to push
-// return the costs tuple of the element
-// use that tuple to execute the move
+/*
+** Look through B and find the cheapest element to push
+** Return the costs tuple of the element
+** Use that tuple to execute the move
+** Optimiser aware, e.g. (ra, rb) considered one move
+*/
 t_costs_tuple	*find_cheapest(t_stacks *stacks)
 {
 	t_list_node		*curr;

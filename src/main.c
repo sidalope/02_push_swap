@@ -6,12 +6,13 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 18:58:28 by abisani           #+#    #+#             */
-/*   Updated: 2025/12/13 12:25:44 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/13 17:48:39 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/* Free all allocated memory and exit */
 static void	clean_up(t_stacks *stacks)
 {
 	ft_lstclear(&stacks->a, stacks->a);

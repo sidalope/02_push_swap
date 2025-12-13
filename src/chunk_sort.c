@@ -6,12 +6,13 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 16:43:15 by abisani           #+#    #+#             */
-/*   Updated: 2025/12/13 12:22:18 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/13 17:56:30 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/* Return the smallest rank in lst */
 static int	get_min_rank(t_list_node *lst)
 {
 	int			lst_size;
@@ -28,6 +29,7 @@ static int	get_min_rank(t_list_node *lst)
 	return (min);
 }
 
+/* Push last chunk in A to B while keeping the lowest sorted run in A */
 static void	push_last_chunk(t_stacks *stacks)
 {
 	int		size_a;
@@ -47,6 +49,7 @@ static void	push_last_chunk(t_stacks *stacks)
 	}
 }
 
+/* Rotate A into final position (ascending) */
 static void	position_a(t_stacks *stacks)
 {
 	int		size_a;

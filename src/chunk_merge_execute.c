@@ -6,12 +6,16 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 22:06:45 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/19 23:16:38 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/13 18:10:08 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*
+** Determine optimal rotation direction for stack A
+** Return the number of rotations to execute
+*/
 static int	ops_a(t_costs_tuple *tup)
 {
 	if (!tup->rot_b)
@@ -35,6 +39,7 @@ static int	ops_a(t_costs_tuple *tup)
 	return (0);
 }
 
+/* Rotate list forward (positive ops) or in reverse (negative ops) */
 static void	rotate_list(t_stacks *stacks, t_list_node **lst, int ops)
 {
 	while (ops)
@@ -52,9 +57,10 @@ static void	rotate_list(t_stacks *stacks, t_list_node **lst, int ops)
 	}
 }
 
-// Take a t_costs_tuple and execute the smallest number of 
-//	operations on the list.
-// Maybe should actually just go in merge_b
+/*
+** Take a t_costs_tuple and execute the smallest number of
+** operations on the list
+*/
 int	execute_ops(t_stacks *stacks, t_costs_tuple *ops_tup)
 {
 	if (!stacks || !stacks->a || !stacks->b || !ops_tup)

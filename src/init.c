@@ -6,12 +6,13 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:52:41 by abisani           #+#    #+#             */
-/*   Updated: 2025/12/13 12:06:23 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/13 17:54:34 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/* Return appropriate number of chunks based on input size */
 int	init_num_chunks(t_stacks *stacks)
 {
 	int	n_chunks;
@@ -38,6 +39,7 @@ int	init_num_chunks(t_stacks *stacks)
 	return (stacks->n_chunks = n_chunks);
 }
 
+/* Check for duplicates and assign rank by recursively updating smaller nodes */
 static int	verify_node(t_list_node *node, t_list_node *head)
 {
 	long	head_val;
@@ -57,6 +59,7 @@ static int	verify_node(t_list_node *node, t_list_node *head)
 	return (1);
 }
 
+/* Verify and rank all nodes in the list */
 int	check_and_rank(t_list_node *lst, t_list_node *head)
 {
 	if (!lst || !head)
@@ -69,7 +72,7 @@ int	check_and_rank(t_list_node *lst, t_list_node *head)
 	return (1);
 }
 
-// traverse a and assign chunk
+/* Traverse a and assign chunk */
 static int	assign_chunk(t_list_node *curr, t_list_node *head, int n_chunks,
 							int size_a)
 {
@@ -92,6 +95,7 @@ static int	assign_chunk(t_list_node *curr, t_list_node *head, int n_chunks,
 	return (assign_chunk(curr->next, head, n_chunks, size_a));
 }
 
+/* Parse arguments, build stack, and assign ranks and chunks */
 int	init(int argc, char *argv[], t_stacks *stacks)
 {
 	int			i;

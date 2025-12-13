@@ -6,12 +6,13 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 17:16:29 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/19 21:01:18 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/13 17:59:12 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/* Find cheapest rotation between elements of either target chunk */
 static int	calculate_cheapest(t_stacks *stacks, int high_chunk, int low_chunk)
 {
 	int			rotations;
@@ -36,7 +37,10 @@ static int	calculate_cheapest(t_stacks *stacks, int high_chunk, int low_chunk)
 	return (ps_error(), 0);
 }
 
-// Add look-ahead to two or three ops?
+/*
+** Execute the cheapest push to B
+** Could look-ahead to two or three ops
+*/
 static void	send_cheapest(t_stacks *stacks, int rotations, int low_chunk)
 {
 	while (rotations)
@@ -57,6 +61,7 @@ static void	send_cheapest(t_stacks *stacks, int rotations, int low_chunk)
 		rotate(&(stacks->b), stacks);
 }
 
+/* Send two chunks to B */
 static void	send_chunks(t_stacks *stacks, int high_chunk, int low_chunk,
 						int size_a)
 {
@@ -75,7 +80,7 @@ static void	send_chunks(t_stacks *stacks, int high_chunk, int low_chunk,
 	}
 }
 
-// Send all chunk pairs to b, leaving the last one in a
+/* Send all chunk pairs to B, leaving the last one in A */
 int	split_pairs(t_stacks *stacks)
 {
 	int		low_chunk;
