@@ -54,6 +54,28 @@ It will output the operations it took (and any errors) to stdout:
 	pb
 	etc..
 
+## Algorithm Overview
+
+This sort is inspired by "chunk sort" and operates in three phases:
+1. Chunk Division & Ranking
+	- Element series is normalised (to ease cost calculations and subdivision into chunks).
+	- Elements are assigned chunks based on rank.
+2. Push paired chunks to B
+	- Chunks are sent to stack B in pairs, starting from the middle and working outward, e.g. for chunks 0-4, send (2, 1), then (3, 0), then 4.
+	- The largest ranks (biggest values) are at the top of B in strata.
+3. Greedy Insertion Sort (B → A)
+	- For each element in B calculate the cost to push it back to into A at the right position.
+	- Execute the cheapest insertion.
+	- The cost calculation is optimizer-aware and tries to create opportunities for rr and rrr.
+
+Finally, the list of operations executed is optimised to remove redundant pairs like `(pa, pb)`, and to condense pairs such as: `(ra, rb)` into `rr`.
+
+## Possible improvements
+
+- Add lookahead to the push cost calculator. When choosing the next operation, also consider the cost of the next two. This should be relatively straightforward.
+- The push cost calculator could weight the cost by the relative position of each element in the chunk (to prioritise the lowest ranks so they will end up closer to their final position; this hurts opportunities for further greedy selection, see last bullet point). This could be slightly complicated to balance but might be very efficient.
+- Find opportunities for sa, sb, and ss (such as after pushing, scan for cheap opportunities to swap the tops of each list into slightly better position).
+- This is a rebuild. Currently the subdivision into chunks creates enough efficiency that the greedy insertion calculation provides relatively little benefit. Although the chunking has been tested to be most efficient with these chunk sizes, it limits what can be done afterwards. It might benefit efficiency to either remove the chunking, or use it differently in something akin to merge sort. There was an article alledging the efficiency of a 3-way merge sort; worth considering.
 
 ## Resources
 
@@ -61,8 +83,9 @@ AI was used to
 * Calculate projected operations costs of possible algorithms.
 * Repeat test setup and teardown pattern for given test cases.
 * Generate files containing test inputs.
+* Generate script to automatically repeat the test with x permutations of n numbers for all n within a range (This is to try and avoid skewed results for one permutation of n numers during manual testing).
 * Generating plot_results.py (using matplotlib to view results).
 
-Classic tutorials and resources on this challenge that however do not relate to the algorithm used here:
+Classic tutorials and resources on this challenge:
 * [Mechanical turk algo (Medium.com)](https://medium.com/@ayogun/push-swap-c1f5d2d41e97)
 * [The least amount of moves with two stacks - Jamie Dawson (Medium.com)](https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a)
