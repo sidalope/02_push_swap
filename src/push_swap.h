@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abisiani <abisiani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:24:26 by abisani           #+#    #+#             */
-/*   Updated: 2025/12/13 12:46:49 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/13 16:46:16 by abisiani         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -74,6 +74,9 @@ size_t			ft_strlcpy(char *dst, const char *src, size_t size);
 char			*ft_strjoin(char const *s1, char const *s2);
 size_t			ft_strlen(const char *s);
 int				max(int a, int b);
+int				sort_five(t_stacks *stacks);
+void			position_a(t_stacks *stacks);
+int				get_min_rank(t_list_node *lst);
 
 // Halfway sort utils
 void			send_bottom_ranks(t_stacks *stacks);

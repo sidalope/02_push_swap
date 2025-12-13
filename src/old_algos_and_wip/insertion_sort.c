@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   insertion_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abisiani <abisiani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 10:26:56 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/15 10:15:18 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/13 16:32:17 by abisiani         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "push_swap.h"
 
@@ -17,7 +17,7 @@ static void	find_next_rank(t_stacks *stacks, int next_rank)
 	while (stacks->a->rank != next_rank)
 		rotate(&(stacks->a), stacks->a);
 }
-
+// Broken
 int	sort(t_stacks *stacks, size_t len)
 {
 	size_t	next_rank;

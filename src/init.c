@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:52:41 by abisani           #+#    #+#             */
-/*   Updated: 2025/12/13 17:54:34 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/13 19:16:22 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ int	init_num_chunks(t_stacks *stacks)
 	if (!stacks)
 		return (0);
 	size_a = ft_lstsize(stacks->a, 0, stacks->a);
-	if (size_a <= 4)
-		n_chunks = 1;
-	else if (size_a <= 20)
+	if (size_a <= 20)
 		n_chunks = 2;
 	else if (size_a <= 50)
 		n_chunks = 3;
