@@ -8,7 +8,7 @@ Because swap_push doesn't feel as natural
 
 ## Description
 
-*push_swap* physically sorts a "stack" of **unique** integers in ascending order using a limited operation set and two circular lists. *push_swap*  The goal is to minimise the number of operations necessary in the general case, while staying within:
+*push_swap* physically sorts a "stack" of **unique** integers in ascending order using a limited operation set and two circular lists. The goal is to minimise the number of operations necessary in the general case, while staying within:
 * For n = 100 under 1100 operations and for n = 500 in under 8500 operations.
 * For n = 100 under 700 operations and for n = 500 numbers in under 11500 operations.
 * For n = 100 under 1300 operations and for n = 500 numbers in under 5500 operations.
@@ -54,6 +54,14 @@ It will output the operations it took (and any errors) to stdout:
 	pb
 	etc..
 
+In *bash*:
+
+`ARG="23 234 345 123 98 65 3"; ./push_swap $ARG`
+
+Check the result by piping everything to the checker:
+
+`ARG="23 234 345 123 98 65 3"; ./push_swap $ARG | ./checker_linux $ARG`
+
 ## Algorithm Overview
 
 This sort is inspired by "chunk sort" and operates in three phases:
@@ -81,11 +89,10 @@ Finally, the list of operations executed is optimised to remove redundant pairs 
 
 AI was used to 
 * Calculate projected operations costs of possible algorithms.
-* Repeat test setup and teardown pattern for given test cases.
-* Generate files containing test inputs.
+* Repeat test setup and teardown pattern for given unit test testing cases.
 * Generate script to automatically repeat the test with x permutations of n numbers for all n within a range (This is to try and avoid skewed results for one permutation of n numers during manual testing).
 * Generating plot_results.py (using matplotlib to view results).
 
-Classic tutorials and resources on this challenge:
+Classic tutorials and resources on this challenge (not the inspirations for this project):
 * [Mechanical turk algo (Medium.com)](https://medium.com/@ayogun/push-swap-c1f5d2d41e97)
 * [The least amount of moves with two stacks - Jamie Dawson (Medium.com)](https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a)

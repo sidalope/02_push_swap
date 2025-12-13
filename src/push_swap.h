@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abisiani <abisiani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:24:26 by abisani           #+#    #+#             */
-/*   Updated: 2025/12/12 17:34:39 by abisiani         ###   ########.fr       */
+/*   Updated: 2025/12/13 12:46:49 by abisani          ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -104,10 +104,10 @@ int				sort(t_stacks *stacks, size_t len);
 void			halfway_sort(t_stacks *stacks);
 
 // Debugging
-void		print_chunks(t_list_node *curr, t_stacks *stacks);
-void		print_costs(t_stacks *stacks);
-void		print_lst_content(t_list_node *current, t_list_node *head);
-void		print_lst_ranks(t_list_node *current, t_list_node *head);
-void		print_lists(t_stacks *stacks);
+void			print_chunks(t_list_node *curr, t_stacks *stacks);
+void			print_costs(t_stacks *stacks);
+void			print_lst_content(t_list_node *current, t_list_node *head);
+void			print_lst_ranks(t_list_node *current, t_list_node *head);
+void			print_lists(t_stacks *stacks);
 
 #endif
