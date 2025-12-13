@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 18:58:28 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/21 22:01:13 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/13 12:25:44 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void	clean_up(t_stacks *stacks)
 	ft_lstclear(&stacks->a, stacks->a);
 	ft_lstclear(&stacks->b, stacks->b);
 	ft_lstclear(&stacks->log, stacks->log);
+	exit(0);
 }
 
 int	main(int argc, char *argv[])
@@ -27,13 +28,13 @@ int	main(int argc, char *argv[])
 		return (0);
 	argc--;
 	if (!init(argc, argv, &stacks))
-		return (1);
+		clean_up(&stacks);
 	if (is_sorted(stacks.a))
-		return (0);
+		clean_up(&stacks);
 	if (!chunk_sort(&stacks))
-		return (1);
+		clean_up(&stacks);
 	if (!naive_pass(&stacks))
-		return (1);
+		clean_up(&stacks);
 	print_log(stacks.log->prev, stacks.log->prev);
 	clean_up(&stacks);
 	return (0);
