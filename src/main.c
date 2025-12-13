@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abisiani <abisiani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 18:58:28 by abisani           #+#    #+#             */
-/*   Updated: 2025/12/13 12:25:44 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/13 17:26:24 by abisiani         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "push_swap.h"
 
@@ -27,11 +27,14 @@ int	main(int argc, char *argv[])
 	if (argc == 1)
 		return (0);
 	argc--;
+	// ft_printf("ONE");
 	if (!init(argc, argv, &stacks))
 		clean_up(&stacks);
 	if (is_sorted(stacks.a))
 		clean_up(&stacks);
-	if (!chunk_sort(&stacks))
+	if (argc > 1 && argc < 6)
+		sort_five(&stacks);
+	else if (!chunk_sort(&stacks))
 		clean_up(&stacks);
 	if (!naive_pass(&stacks))
 		clean_up(&stacks);

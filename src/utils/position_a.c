@@ -1,43 +1,32 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   chunk_sort.c                                       :+:      :+:    :+:   */
+/*   position_a.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abisiani <abisiani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/04 16:43:15 by abisani           #+#    #+#             */
-/*   Updated: 2025/12/13 16:44:23 by abisiani         ###   ########.fr       */
+/*   Created: 2025/12/13 16:33:51 by abisiani          #+#    #+#             */
+/*   Updated: 2025/12/13 16:46:39 by abisiani         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-static void	push_last_chunk(t_stacks *stacks)
+void	position_a(t_stacks *stacks)
 {
 	int		size_a;
 	int		min_rank;
 
 	size_a = ft_lstsize(stacks->a, 0, stacks->a);
 	min_rank = get_min_rank(stacks->a);
-	while (size_a-- > 0)
+	if (stacks->a->rank == 0)
+		return ;
+	if (stacks->a->rank < size_a / 2)
 	{
-		if (stacks->a->rank == min_rank)
-		{
-			rotate(&(stacks->a), stacks);
-			min_rank++;
-		}
-		else
-			push(&(stacks->a), &(stacks->b), stacks);
+		while (stacks->a->rank != min_rank)
+			rrotate(&(stacks->a), stacks);
 	}
-}
-
-int	chunk_sort(t_stacks *stacks)
-{
-	if (!split_pairs(stacks))
-		return (0);
-	push_last_chunk(stacks);
-	if (!merge_b(stacks))
-		return (0);
-	position_a(stacks);
-	return (1);
+	else
+		while (stacks->a->rank != min_rank)
+			rotate(&(stacks->a), stacks);
 }
