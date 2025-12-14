@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 14:15:02 by abisiani          #+#    #+#             */
-/*   Updated: 2025/11/20 01:47:13 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/14 12:30:39 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ static int	log_action(t_list_node **lst, t_stacks *stacks)
 	if (*lst == stacks->a)
 	{
 		if (!log_op(&(stacks->log), "sa"))
-			return (ps_error(), 0);
+			ps_error(stacks);
 	}
 	else
 	{
 		if (!log_op(&(stacks->log), "sb"))
-			return (ps_error(), 0);
+			ps_error(stacks);
 	}
 	return (1);
 }

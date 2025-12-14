@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 21:07:00 by abisani           #+#    #+#             */
-/*   Updated: 2025/12/13 18:07:24 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/14 12:06:51 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static t_costs_tuple	*get_target_a(t_stacks *stacks, int size_a, int rank_b)
 	curr = stacks->a;
 	costs = (t_costs_tuple *) malloc(sizeof(t_costs_tuple));
 	if (!costs)
-		return (ps_error(), NULL);
+		ps_error(stacks);
 	costs->rank = INT_MAX;
 	costs->rot_b = 0;
 	while (rotations < size_a)
@@ -74,7 +74,7 @@ static t_costs_tuple	*get_target_a(t_stacks *stacks, int size_a, int rank_b)
 **   - Get b rotation costs
 **   - Calculate total cheapest rotations
 */
-static int	calculate_costs_b(t_stacks *stacks)
+static void	calculate_costs_b(t_stacks *stacks)
 {
 	int				i;
 	int				size_b;
@@ -90,31 +90,26 @@ static int	calculate_costs_b(t_stacks *stacks)
 		if (curr->costs)
 			free(curr->costs);
 		curr->costs = get_target_a(stacks, size_a, curr->rank);
-		if (!curr->costs)
-			return (0);
 		if (i < size_b / 2)
 			curr->costs->rot_b = i++;
 		else
 			curr->costs->rot_b = i++ - size_b;
 		curr = curr->next;
 	}
-	return (1);
 }
 
 /* Merge all elements of B with A using the next cheapest operation */
-int	merge_b(t_stacks *stacks)
+void	merge_b(t_stacks *stacks)
 {
 	t_costs_tuple	*cheapest;
 
 	cheapest = NULL;
 	if (!stacks || !stacks->b)
-		return (ps_error(), 0);
+		ps_error(stacks);
 	while (stacks->b)
 	{
-		if (!calculate_costs_b(stacks))
-			return (0);
+		calculate_costs_b(stacks);
 		cheapest = find_cheapest(stacks);
 		execute_ops(stacks, cheapest);
 	}
-	return (1);
 }

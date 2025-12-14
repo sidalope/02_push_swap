@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 14:09:34 by abisiani          #+#    #+#             */
-/*   Updated: 2025/11/20 02:02:00 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/14 12:33:48 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ static int	log_push(t_stacks *stacks, t_list_node **src)
 	if (*src == stacks->a)
 	{
 		if (!log_op(&(stacks->log), "pb"))
-			return (ps_error(), 0);
+			ps_error(stacks);
 	}
 	else
 	{
 		if (!log_op(&(stacks->log), "pa"))
-			return (ps_error(), 0);
+			ps_error(stacks);
 	}
 	return (1);
 }

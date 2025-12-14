@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 16:43:15 by abisani           #+#    #+#             */
-/*   Updated: 2025/12/13 19:16:19 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/14 12:07:11 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,9 @@ static void	push_last_chunk(t_stacks *stacks)
 
 int	chunk_sort(t_stacks *stacks)
 {
-	if (!split_pairs(stacks))
-		return (0);
+	split_pairs(stacks);
 	push_last_chunk(stacks);
-	if (!merge_b(stacks))
-		return (0);
+	merge_b(stacks);
 	position_a(stacks);
 	return (1);
 }

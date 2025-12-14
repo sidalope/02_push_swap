@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 22:06:45 by abisani           #+#    #+#             */
-/*   Updated: 2025/12/13 18:10:08 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/14 12:02:05 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,14 @@ static void	rotate_list(t_stacks *stacks, t_list_node **lst, int ops)
 }
 
 /*
-** Take a t_costs_tuple and execute the smallest number of
-** operations on the list
+** Take a t_costs_tuple and execute the smallest number of operations on the
+** list
 */
-int	execute_ops(t_stacks *stacks, t_costs_tuple *ops_tup)
+void	execute_ops(t_stacks *stacks, t_costs_tuple *ops_tup)
 {
 	if (!stacks || !stacks->a || !stacks->b || !ops_tup)
-		return (ps_error(), 0);
+		ps_error(stacks);
 	rotate_list(stacks, &(stacks->a), ops_a(ops_tup));
 	rotate_list(stacks, &(stacks->b), ops_tup->rot_b);
 	push(&(stacks->b), &(stacks->a), stacks);
-	return (1);
 }

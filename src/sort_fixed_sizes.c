@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 15:21:58 by abisiani          #+#    #+#             */
-/*   Updated: 2025/12/14 11:44:17 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/14 12:34:32 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,20 +67,18 @@ static void	sort_three(t_stacks *stacks)
 }
 
 /* Sort stack a of sizes two to five */
-int	sort_five(t_stacks *stacks)
+void	sort_five(t_stacks *stacks)
 {
 	if (!stacks || !stacks->a || ft_lstsize(stacks->a, 0, stacks->a) == 1)
-		return (ps_error(), 0);
+		ps_error(stacks);
 	if (ft_lstsize(stacks->a, 0, stacks->a) == 2)
 	{
 		swap(&(stacks->a), stacks);
-		return (1);
+		return ;
 	}
 	while (ft_lstsize(stacks->a, 0, stacks->a) > 3)
 		push(&(stacks->a), &(stacks->b), stacks);
 	sort_three(stacks);
 	insert_remainder(stacks);
 	position_a(stacks);
-	// print_lists(stacks);
-	return (1);
 }

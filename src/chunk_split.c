@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 17:16:29 by abisani           #+#    #+#             */
-/*   Updated: 2025/12/13 17:59:12 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/14 12:39:35 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	calculate_cheapest(t_stacks *stacks, int high_chunk, int low_chunk)
 		curr = curr->next;
 		prev = prev->prev;
 	}
-	return (ps_error(), 0);
+	return (ps_error(stacks), 0);
 }
 
 /*
@@ -81,7 +81,7 @@ static void	send_chunks(t_stacks *stacks, int high_chunk, int low_chunk,
 }
 
 /* Send all chunk pairs to B, leaving the last one in A */
-int	split_pairs(t_stacks *stacks)
+void	split_pairs(t_stacks *stacks)
 {
 	int		low_chunk;
 	int		high_chunk;
@@ -91,12 +91,11 @@ int	split_pairs(t_stacks *stacks)
 	low_chunk = high_chunk - 1;
 	size_a = ft_lstsize(stacks->a, 0, stacks->a);
 	if (!stacks || !stacks->n_chunks)
-		return (ps_error(), 0);
+		ps_error(stacks);
 	while (low_chunk >= 0)
 	{
 		send_chunks(stacks, high_chunk, low_chunk, size_a);
 		high_chunk++;
 		low_chunk--;
 	}
-	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:55:28 by abisiani          #+#    #+#             */
-/*   Updated: 2025/11/05 20:49:19 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/14 12:53:41 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ long	ft_atoi(char *str)
 		{
 			res = res * 10 + *str++ - '0';
 			if ((!minus && res > INT_MAX) || (minus && - res < INT_MIN))
-				return (ps_error(), 0);
+				return (LONG_MIN);
 		}
 		if (minus)
 			res *= -1;

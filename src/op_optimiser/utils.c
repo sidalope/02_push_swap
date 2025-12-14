@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:59:54 by abisani           #+#    #+#             */
-/*   Updated: 2025/11/15 08:00:40 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/14 12:21:22 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	delete_nodes(t_list_node **lst)
 	t_list_node	*next;
 
 	if (!lst || !*lst || ft_lstsize(*lst, 0, *lst) < 2)
-		return (ps_error(), 0);
+		return (0);
 	next = (*lst)->next;
 	ft_lstpop(&next);
 	ft_lstpop(lst);
@@ -30,7 +30,7 @@ int	replace_nodes(t_list_node **lst, t_list_node *new)
 	t_list_node	*next;
 
 	if (!lst || !*lst || !new || ft_lstsize(*lst, 0, *lst) < 2)
-		return (ps_error(), 0);
+		return (0);
 	current = *lst;
 	next = (*lst)->next;
 	ft_lstadd_front(lst, new);

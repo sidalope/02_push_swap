@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abisiani <abisiani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:24:26 by abisani           #+#    #+#             */
-/*   Updated: 2025/12/13 16:46:16 by abisiani         ###   ########.fr       */
+/*   Updated: 2025/12/14 12:58:30 by abisani          ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -65,16 +65,15 @@ int				is_sorted(t_list_node *lst);
 void			print_log(t_list_node *current, t_list_node *head);
 
 // Utils
+void			ps_error(t_stacks *stacks);
 int				abs(int x);
 long			ft_atoi(char *str);
 int				ft_isnumber(char *str);
-void			ps_error(void);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t			ft_strlcpy(char *dst, const char *src, size_t size);
 char			*ft_strjoin(char const *s1, char const *s2);
 size_t			ft_strlen(const char *s);
 int				max(int a, int b);
-int				sort_five(t_stacks *stacks);
 void			position_a(t_stacks *stacks);
 int				get_min_rank(t_list_node *lst);
 
@@ -89,22 +88,23 @@ int				check_and_rank(t_list_node *lst, t_list_node *head);
 
 // Optimiser
 int				log_op(t_list_node **log, char *operation);
-int				naive_pass(t_stacks *stacks);
+void			naive_pass(t_stacks *stacks);
 int				delete_nodes(t_list_node **lst);
 int				replace_nodes(t_list_node **lst, t_list_node *new);
 int				rotate_log(t_list_node **lst);
 int				rrotate_log(t_list_node **lst);
 
 // Chunk sort
-int				split_pairs(t_stacks *stacks);
-int				merge_b(t_stacks *stacks);
+void			split_pairs(t_stacks *stacks);
+void			merge_b(t_stacks *stacks);
 t_costs_tuple	*find_cheapest(t_stacks *stacks);
-int				execute_ops(t_stacks *stacks, t_costs_tuple *tup);
+void			execute_ops(t_stacks *stacks, t_costs_tuple *tup);
 
 // Sorting algos
+void			sort_five(t_stacks *stacks);
 int				chunk_sort(t_stacks *stacks);
-int				sort(t_stacks *stacks, size_t len);
-void			halfway_sort(t_stacks *stacks);
+// int				sort(t_stacks *stacks, size_t len);
+// void			halfway_sort(t_stacks *stacks);
 
 // Debugging
 void			print_chunks(t_list_node *curr, t_stacks *stacks);

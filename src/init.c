@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:52:41 by abisani           #+#    #+#             */
-/*   Updated: 2025/12/13 19:16:22 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/14 12:56:30 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,13 @@ static int	verify_node(t_list_node *node, t_list_node *head)
 	long	head_val;
 	long	node_val;
 
+	if (!node || !head)
+		return (0);
 	head_val = ft_atoi(head->content);
 	node_val = ft_atoi(node->content);
-	if (!node || !head)
-		return (ps_error(), 0);
-	if (node != head && head_val == node_val)
-		return (ps_error(), 0);
+	if (head_val == LONG_MIN || node_val == LONG_MIN
+		|| (node != head && head_val == node_val))
+		return (0);
 	if (head_val < node_val)
 		node->rank++;
 	if (node->next == head)
@@ -78,7 +79,7 @@ static int	assign_chunk(t_list_node *curr, t_list_node *head, int n_chunks,
 
 	i = n_chunks;
 	if (!head || !n_chunks)
-		return (ps_error(), 0);
+		return (0);
 	while (i > 0)
 	{
 		if (curr->rank >= (size_a / n_chunks) * (i - 1))
@@ -109,13 +110,13 @@ int	init(int argc, char *argv[], t_stacks *stacks)
 	{
 		new_node = ft_lstnew(argv[argc]);
 		if (!ft_isnumber(argv[argc]) || !new_node)
-			return (ps_error(), 0);
+			ps_error(stacks);
 		ft_lstadd_front(&stacks->a, new_node);
 		argc--;
 	}
 	if (!init_num_chunks(stacks)
 		|| !check_and_rank(stacks->a, stacks->a)
 		|| !assign_chunk(stacks->a, stacks->a, stacks->n_chunks, i))
-		return (0);
+		ps_error(stacks);
 	return (1);
 }

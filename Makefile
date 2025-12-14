@@ -1,14 +1,14 @@
-#******************************************************************************#
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abisiani <abisiani@student.42.fr>          +#+  +:+       +#+         #
+#    By: abisani <abisani@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/07 22:59:16 by abisiani          #+#    #+#              #
-#    Updated: 2025/12/13 16:46:04 by abisiani         ###   ########.fr        #
+#    Updated: 2025/12/14 11:51:09 by abisani          ###   ########.fr        #
 #                                                                              #
-#******************************************************************************#
+# **************************************************************************** #
 
 .PHONY: all clean fclean re bonus test unit_tests
 
@@ -39,7 +39,7 @@ OPTIMISER_FILES = log.c naive_optimisation.c utils.c
 PRINTF_FILES = intlen.c put_unsnbr_fd.c ft_printf.c print_c.c print_s.c \
 	print_p.c print_di.c print_u.c print_x.c print_x_cap.c ft_putnbr_fd.c
 
-UTILS_FILES = ft_atoi.c ft_isnumber.c  ps_error.c ft_strncmp.c \
+UTILS_FILES = ft_atoi.c ft_isnumber.c ft_strncmp.c \
 	ft_strjoin.c ft_strlen.c max.c position_a.c get_min_rank.c
 
 DEBUG_FILES = print_chunks.c print_content.c print_costs.c

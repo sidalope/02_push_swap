@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 10:39:36 by abisani           #+#    #+#             */
-/*   Updated: 2025/12/13 12:22:47 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/14 13:00:20 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,27 +21,27 @@ static int	combine_node_pairs(t_stacks *stacks, char *ops)
 	{
 		new_node = ft_lstnew((void *)"ss");
 		if (!new_node)
-			return (ps_error(), -1);
+			ps_error(stacks);
 	}
 	else if (!ft_strncmp(ops, "rarb", 4) || !ft_strncmp(ops, "rbra", 4))
 	{
 		new_node = ft_lstnew((void *)"rr");
 		if (!new_node)
-			return (ps_error(), -1);
+			ps_error(stacks);
 	}
 	else if (!ft_strncmp(ops, "rrarrb", 6) || !ft_strncmp(ops, "rrbrra", 6))
 	{
 		new_node = ft_lstnew((void *)"rrr");
 		if (!new_node)
-			return (ps_error(), -1);
+			ps_error(stacks);
 	}
 	if (new_node && !replace_nodes(&(stacks->log), new_node))
-		return (0);
+		ps_error(stacks);
 	rotate_log(&(stacks->log));
 	return (new_node != NULL);
 }
 
-static int	combine_pass(t_stacks *stacks)
+static void	combine_pass(t_stacks *stacks)
 {
 	char	*ops;
 	int		i;
@@ -51,23 +51,23 @@ static int	combine_pass(t_stacks *stacks)
 	i = 1;
 	len = ft_lstsize(stacks->log, 0, stacks->log);
 	if (!stacks || !stacks->log || len == 0)
-		return (ps_error(), 0);
+		ps_error(stacks);
 	if (len == 1)
-		return (1);
+		return ;
 	while (i++ < len)
 	{
 		ops = ft_strjoin(stacks->log->content, stacks->log->next->content);
 		if (!ops)
-			return (ps_error(), 0);
+			ps_error(stacks);
 		combined = combine_node_pairs(stacks, ops);
 		free (ops);
-		if (combined == -1)
-			return (0);
-		else if (combined)
+		// if (combined == -1)
+		// 	return (0);
+		if (combined)
 			i++;
 	}
 	rotate_log(&(stacks->log));
-	return (1);
+	// return (1);
 }
 
 static int	del_node_pairs(t_stacks *stacks, char *ops)
@@ -77,7 +77,8 @@ static int	del_node_pairs(t_stacks *stacks, char *ops)
 		|| !ft_strncmp(ops, "rrara", 5) || !ft_strncmp(ops, "rarra", 5)
 		|| !ft_strncmp(ops, "rrbrb", 5) || !ft_strncmp(ops, "rbrrb", 5))
 	{
-		delete_nodes(&(stacks->log));
+		if (!delete_nodes(&(stacks->log)))
+			ps_error(stacks);
 		return (1);
 	}
 	else
@@ -87,7 +88,7 @@ static int	del_node_pairs(t_stacks *stacks, char *ops)
 	}
 }
 
-static int	delete_pass(t_stacks *stacks)
+static void	delete_pass(t_stacks *stacks)
 {
 	char	*ops;
 	int		i;
@@ -97,25 +98,23 @@ static int	delete_pass(t_stacks *stacks)
 	i = 1;
 	len = ft_lstsize(stacks->log, 0, stacks->log);
 	if (!stacks || !stacks->log || len == 0)
-		return (ps_error(), 0);
+		ps_error(stacks);
 	if (len == 1)
-		return (1);
+		return ;
 	while (i++ < len)
 	{
 		ops = ft_strjoin(stacks->log->content, stacks->log->next->content);
 		if (!ops)
-			return (ps_error(), 0);
+			ps_error(stacks);
 		if (del_node_pairs(stacks, ops))
 			i++;
 		free(ops);
 	}
 	rotate_log(&(stacks->log));
-	return (1);
 }
 
-int	naive_pass(t_stacks *stacks)
+void	naive_pass(t_stacks *stacks)
 {
-	if (!combine_pass(stacks) || !delete_pass(stacks))
-		return (0);
-	return (1);
+	combine_pass(stacks);
+	delete_pass(stacks);
 }
