@@ -12,7 +12,8 @@
 
 #include "../push_swap.h"
 
-//also init and tear down log
+/* Records a stack operation to the log for later optimization.
+ * Returns 1 on success, 0 on allocation failure. */
 int	log_op(t_list_node **log, char *operation)
 {
 	t_list_node	*new_node;

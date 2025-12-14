@@ -6,12 +6,13 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:59:54 by abisani           #+#    #+#             */
-/*   Updated: 2025/12/14 12:21:22 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/14 13:34:39 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+/* Deletes two consecutive nodes from lst */
 int	delete_nodes(t_list_node **lst)
 {
 	t_list_node	*next;
@@ -24,6 +25,10 @@ int	delete_nodes(t_list_node **lst)
 	return (1);
 }
 
+/* 
+** Takes a new node and replaces two consecutive nodes in lst.
+** Returns 1 if something was replaced.
+*/
 int	replace_nodes(t_list_node **lst, t_list_node *new)
 {
 	t_list_node	*current;
@@ -39,6 +44,7 @@ int	replace_nodes(t_list_node **lst, t_list_node *new)
 	return (1);
 }
 
+/* Rotates the log without adding operations to log (as in rotate()) */
 int	rotate_log(t_list_node **lst)
 {
 	if (!lst || !*lst)
@@ -47,6 +53,7 @@ int	rotate_log(t_list_node **lst)
 	return (0);
 }
 
+/* Rrotates the log without adding operations to log (as in rrotate()) */
 int	rrotate_log(t_list_node **lst)
 {
 	if (!lst || !*lst)

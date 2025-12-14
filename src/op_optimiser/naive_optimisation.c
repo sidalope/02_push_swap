@@ -6,12 +6,16 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 10:39:36 by abisani           #+#    #+#             */
-/*   Updated: 2025/12/14 13:12:06 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/14 13:47:04 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+/* 
+** Combines two consecutive operations (sa, sb), (ra, rb), (rra, rrb)
+** Returns 1 if a combination occurred, 0 otherwise.
+*/
 static int	combine_node_pairs(t_stacks *stacks, char *ops)
 {
 	t_list_node	*new_node;
@@ -41,6 +45,11 @@ static int	combine_node_pairs(t_stacks *stacks, char *ops)
 	return (new_node != NULL);
 }
 
+/* 
+** First optimization pass: combines consecutive operations.
+** Gets the symbols for consecutinve operations and passes them
+** to combine_node_pairs().
+*/
 static void	combine_pass(t_stacks *stacks)
 {
 	char	*ops;
@@ -67,6 +76,10 @@ static void	combine_pass(t_stacks *stacks)
 	rotate_log(&(stacks->log));
 }
 
+/* 
+** Deletes operation pairs (pa, pb), (sa, sa), (ra, rra).
+** Returns 1 if deletion occurred, 0 otherwise.
+*/
 static int	del_node_pairs(t_stacks *stacks, char *ops)
 {
 	if (!ft_strncmp(ops, "papb", 4) || !ft_strncmp(ops, "pbpa", 4)
@@ -85,6 +98,11 @@ static int	del_node_pairs(t_stacks *stacks, char *ops)
 	}
 }
 
+/* 
+** Second optimization pass: Removes operation pairs.
+** Gets the symbols for consecutinve operations and passes them
+** to del_node_pairs().
+*/
 static void	delete_pass(t_stacks *stacks)
 {
 	char	*ops;
@@ -110,6 +128,10 @@ static void	delete_pass(t_stacks *stacks)
 	rotate_log(&(stacks->log));
 }
 
+/* 
+** Main optimization entry point.
+** First combines operations (sa+sb->ss), then eliminates pairs (pa+pb).
+*/
 void	naive_pass(t_stacks *stacks)
 {
 	combine_pass(stacks);

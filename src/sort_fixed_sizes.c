@@ -6,12 +6,13 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 15:21:58 by abisiani          #+#    #+#             */
-/*   Updated: 2025/12/14 13:15:13 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/14 13:24:28 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/* Inserts in A the elements remaining in B (up to two) */
 static int	insert_remainder(t_stacks *stacks)
 {
 	int		min_rank;
@@ -37,6 +38,7 @@ static int	insert_remainder(t_stacks *stacks)
 	return (1);
 }
 
+/* Sorts exactly 3 elements using hardcoded decision tree */
 static void	sort_three(t_stacks *stacks)
 {
 	if (is_sorted(stacks->a))
@@ -65,7 +67,7 @@ static void	sort_three(t_stacks *stacks)
 		swap(&(stacks->a), stacks);
 }
 
-/* Sort stack a of sizes two to five */
+/* Sort stack A of sizes two to five */
 void	sort_five(t_stacks *stacks)
 {
 	if (!stacks || !stacks->a || ft_lstsize(stacks->a, 0, stacks->a) == 1)
