@@ -1,49 +1,50 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   sort_fixed_sizes.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abisiani <abisiani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 15:21:58 by abisiani          #+#    #+#             */
-/*   Updated: 2025/12/13 17:42:32 by abisiani         ###   ########.fr       */
+/*   Updated: 2025/12/14 11:44:17 by abisani          ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	insert_remainder(t_stacks *stacks)
+
+static int 	insert_remainder(t_stacks *stacks)
 {
-	int	ins_rank;
+	int		min_rank;
+	int		min_b;
 
 	if (!stacks->b)
 		return (0);
+	min_rank = stacks->a->rank;
+	min_b = get_min_rank(stacks->b);
+	if (min_b < min_rank)
+		min_rank = min_b;
 	if (stacks->b->rank > stacks->b->next->rank)
 		swap(&(stacks->b), stacks);
+	if (stacks->b->rank == min_rank)
+		push(&(stacks->b), &(stacks->a), stacks);
 	while (stacks->b)
 	{
-		ins_rank = stacks->b->rank;
-		while (stacks->a->prev->rank != ins_rank - 1)
-			rotate(&(stacks->a), stacks);
-		push(&(stacks->b), &(stacks->a), stacks);
+		if (stacks->b->rank == stacks->a->rank - 1
+			|| stacks->b->rank == stacks->a->prev->rank + 1)
+			push(&(stacks->b), &(stacks->a), stacks);
+		rotate(&(stacks->a), stacks);
 	}
 	return (1);
 }
 
 static void	sort_three(t_stacks *stacks)
 {
-	int		a;
-	int		b;
-	int		c;
-
-	a = stacks->a->rank;
-	b = stacks->a->next->rank;
-	c = stacks->a->next->next->rank;
 	if (is_sorted(stacks->a))
 		return ;
-	if (a < b)
+	if (stacks->a->rank < stacks->a->next->rank)
 	{
-		if (c < a)
+		if (stacks->a->next->next->rank < stacks->a->rank)
 			rrotate(&(stacks->a), stacks);
 		else
 		{
@@ -51,9 +52,9 @@ static void	sort_three(t_stacks *stacks)
 			rotate(&(stacks->a), stacks);
 		}
 	}
-	else if (c < a)
+	else if (stacks->a->next->next->rank < stacks->a->rank)
 	{
-		if (b < c)
+		if (stacks->a->next->rank < stacks->a->next->next->rank)
 			rotate(&(stacks->a), stacks);
 		else
 		{
@@ -71,12 +72,15 @@ int	sort_five(t_stacks *stacks)
 	if (!stacks || !stacks->a || ft_lstsize(stacks->a, 0, stacks->a) == 1)
 		return (ps_error(), 0);
 	if (ft_lstsize(stacks->a, 0, stacks->a) == 2)
+	{
 		swap(&(stacks->a), stacks);
+		return (1);
+	}
 	while (ft_lstsize(stacks->a, 0, stacks->a) > 3)
 		push(&(stacks->a), &(stacks->b), stacks);
 	sort_three(stacks);
 	insert_remainder(stacks);
 	position_a(stacks);
-	print_lists(stacks);
+	// print_lists(stacks);
 	return (1);
 }
