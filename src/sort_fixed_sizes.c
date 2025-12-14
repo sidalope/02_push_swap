@@ -6,7 +6,11 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 15:21:58 by abisiani          #+#    #+#             */
+<<<<<<< Updated upstream
 /*   Updated: 2025/12/14 13:24:28 by abisani          ###   ########.fr       */
+=======
+/*   Updated: 2025/12/13 19:27:02 by abisiani         ###   ########.fr       */
+>>>>>>> Stashed changes
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +19,16 @@
 /* Inserts in A the elements remaining in B (up to two) */
 static int	insert_remainder(t_stacks *stacks)
 {
+<<<<<<< Updated upstream
 	int		min_rank;
 	int		min_b;
+=======
+	int		ins_rank;
+	int		min_rank;
+>>>>>>> Stashed changes
 
+	min_rank = stacks->a->rank;
+	// ft_printf("min rank: %i\n", min_rank);
 	if (!stacks->b)
 		return (0);
 	min_rank = stacks->a->rank;
@@ -26,6 +37,7 @@ static int	insert_remainder(t_stacks *stacks)
 		min_rank = min_b;
 	if (stacks->b->rank > stacks->b->next->rank)
 		swap(&(stacks->b), stacks);
+<<<<<<< Updated upstream
 	if (stacks->b->rank == min_rank)
 		push(&(stacks->b), &(stacks->a), stacks);
 	while (stacks->b)
@@ -34,7 +46,23 @@ static int	insert_remainder(t_stacks *stacks)
 			|| stacks->b->rank == stacks->a->prev->rank + 1)
 			push(&(stacks->b), &(stacks->a), stacks);
 		rotate(&(stacks->a), stacks);
+=======
+	while (stacks->b && stacks->a->next->rank != min_rank)
+	{
+		// print_lst_ranks(stacks->a, stacks->a);
+		ins_rank = stacks->b->rank;
+		if (ins_rank < stacks->a->rank)
+			push(&(stacks->b), &(stacks->a), stacks);
+		rotate(&(stacks->a), stacks);
 	}
+	if (stacks->b)
+	{
+		rotate(&(stacks->a), stacks);
+		push(&(stacks->b), &(stacks->a), stacks);
+>>>>>>> Stashed changes
+	}
+	print_lst_ranks(stacks->a, stacks->a);
+	// print_lists(stacks);
 	return (1);
 }
 
@@ -82,4 +110,8 @@ void	sort_five(t_stacks *stacks)
 	sort_three(stacks);
 	insert_remainder(stacks);
 	position_a(stacks);
+<<<<<<< Updated upstream
+=======
+	return (1);
+>>>>>>> Stashed changes
 }
