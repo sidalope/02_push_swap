@@ -6,14 +6,13 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 15:21:58 by abisiani          #+#    #+#             */
-/*   Updated: 2025/12/14 12:34:32 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/14 13:15:13 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-static int 	insert_remainder(t_stacks *stacks)
+static int	insert_remainder(t_stacks *stacks)
 {
 	int		min_rank;
 	int		min_b;

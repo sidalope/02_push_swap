@@ -6,7 +6,7 @@
 /*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 10:39:36 by abisani           #+#    #+#             */
-/*   Updated: 2025/12/14 13:00:20 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/14 13:12:06 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,10 @@ static void	combine_pass(t_stacks *stacks)
 			ps_error(stacks);
 		combined = combine_node_pairs(stacks, ops);
 		free (ops);
-		// if (combined == -1)
-		// 	return (0);
 		if (combined)
 			i++;
 	}
 	rotate_log(&(stacks->log));
-	// return (1);
 }
 
 static int	del_node_pairs(t_stacks *stacks, char *ops)
