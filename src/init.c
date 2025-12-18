@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abisani <abisani@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: abisiani <abisiani@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:52:41 by abisani           #+#    #+#             */
-/*   Updated: 2025/12/18 13:15:21 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/18 14:05:48 by abisiani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 /* Return appropriate number of chunks based on input size */
 int	init_num_chunks(t_stacks *stacks)
@@ -69,7 +68,8 @@ int	check_and_rank(t_list_node *lst, t_list_node *head)
 		return (0);
 	if (lst->next == head)
 		return (1);
-	check_and_rank(lst->next, head);
+	if (!check_and_rank(lst->next, head))
+		return (0);
 	return (1);
 }
 
@@ -93,7 +93,9 @@ static int	assign_chunk(t_list_node *curr, t_list_node *head, int n_chunks,
 	}
 	if (curr->next == head)
 		return (1);
-	return (assign_chunk(curr->next, head, n_chunks, size_a));
+	if (!assign_chunk(curr->next, head, n_chunks, size_a))
+		return (0);
+	return (1);
 }
 
 /* Parse arguments, build stack, and assign ranks and chunks */
