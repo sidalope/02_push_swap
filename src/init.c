@@ -6,7 +6,7 @@
 /*   By: abisiani <abisiani@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:52:41 by abisani           #+#    #+#             */
-/*   Updated: 2025/12/18 14:05:48 by abisiani         ###   ########.fr       */
+/*   Updated: 2025/12/18 14:33:32 by abisiani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,10 @@ int	init(int argc, char *argv[], t_stacks *stacks)
 	{
 		new_node = ft_lstnew(argv[argc]);
 		if (!ft_isnumber(argv[argc]) || !new_node)
+		{
+			free(new_node);
 			ps_error(stacks);
+		}
 		ft_lstadd_front(&stacks->a, new_node);
 		argc--;
 	}
