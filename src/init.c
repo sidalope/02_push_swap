@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abisiani <abisiani@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: abisani <abisani@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:52:41 by abisani           #+#    #+#             */
-/*   Updated: 2025/12/18 12:17:03 by abisiani         ###   ########.fr       */
+/*   Updated: 2025/12/18 13:15:21 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 /* Return appropriate number of chunks based on input size */
 int	init_num_chunks(t_stacks *stacks)
@@ -54,7 +55,8 @@ static int	verify_node(t_list_node *node, t_list_node *head)
 		node->rank++;
 	if (node->next == head)
 		return (1);
-	verify_node(node->next, head);
+	if (!verify_node(node->next, head))
+		return (0);
 	return (1);
 }
 
