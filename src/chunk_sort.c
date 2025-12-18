@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chunk_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abisiani <abisiani@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 16:43:15 by abisani           #+#    #+#             */
-/*   Updated: 2025/12/14 13:38:36 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/18 11:57:59 by abisiani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,10 @@ static void	push_last_chunk(t_stacks *stacks)
 }
 
 /* Main chunk sort entry point */
-int	chunk_sort(t_stacks *stacks)
+void	chunk_sort(t_stacks *stacks)
 {
 	split_pairs(stacks);
 	push_last_chunk(stacks);
 	merge_b(stacks);
 	position_a(stacks);
-	return (1);
 }

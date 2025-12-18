@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abisiani <abisiani@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: abisiani <abisiani@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 19:45:41 by abisiani          #+#    #+#             */
-/*   Updated: 2025/12/14 19:45:50 by abisiani         ###   ########.fr       */
+/*   Updated: 2025/12/18 12:45:26 by abisiani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../push_swap.h"
 
-static int	log_push(t_stacks *stacks, t_list_node **src)
+static void	log_push(t_stacks *stacks, t_list_node **src)
 {
 	if (*src == stacks->a)
 	{
@@ -24,24 +24,22 @@ static int	log_push(t_stacks *stacks, t_list_node **src)
 		if (!log_op(&(stacks->log), "pa"))
 			ps_error(stacks);
 	}
-	return (1);
 }
 
-int	push(t_list_node **src, t_list_node **dest, \
+void	push(t_list_node **src, t_list_node **dest, \
 			t_stacks *stacks)
 {
 	t_list_node	*second;
 	t_list_node	*last;
 
 	if (!src || !*src)
-		return (-1);
-	if (!log_push(stacks, src))
-		return (0);
+		return ;
+	log_push(stacks, src);
 	if ((*src)->next == *src)
 	{
 		ft_lstadd_front(dest, *src);
 		*src = NULL;
-		return (0);
+		return ;
 	}
 	second = (*src)->next;
 	last = (*src)->prev;
@@ -49,5 +47,4 @@ int	push(t_list_node **src, t_list_node **dest, \
 	second->prev = last;
 	last->next = second;
 	*src = second;
-	return (0);
 }

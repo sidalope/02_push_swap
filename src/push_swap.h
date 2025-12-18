@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abisiani <abisiani@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:24:26 by abisani           #+#    #+#             */
-/*   Updated: 2025/12/14 12:58:30 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/18 12:43:50 by abisiani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include <limits.h>
 
 typedef struct s_costs_tuple
@@ -57,10 +56,10 @@ void			ft_lstpop(t_list_node **lst);
 void			ft_lstclear(t_list_node **current, t_list_node *head);
 
 // Linked list utils and stack operations
-int				push(t_list_node **src, t_list_node **dest, t_stacks *stacks);
-int				swap(t_list_node **lst, t_stacks *stacks);
-int				rotate(t_list_node **lst, t_stacks *stacks);
-int				rrotate(t_list_node **lst, t_stacks *stacks);
+void			push(t_list_node **src, t_list_node **dest, t_stacks *stacks);
+void			swap(t_list_node **lst, t_stacks *stacks);
+void			rotate(t_list_node **lst, t_stacks *stacks);
+void			rrotate(t_list_node **lst, t_stacks *stacks);
 int				is_sorted(t_list_node *lst);
 void			print_log(t_list_node *current, t_list_node *head);
 
@@ -102,9 +101,8 @@ void			execute_ops(t_stacks *stacks, t_costs_tuple *tup);
 
 // Sorting algos
 void			sort_five(t_stacks *stacks);
-int				chunk_sort(t_stacks *stacks);
-// int				sort(t_stacks *stacks, size_t len);
-// void			halfway_sort(t_stacks *stacks);
+void			chunk_sort(t_stacks *stacks);
+void			radix_sort(t_stacks *stacks);
 
 // Debugging
 void			print_chunks(t_list_node *curr, t_stacks *stacks);

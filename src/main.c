@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abisiani <abisiani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abisiani <abisiani@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 18:58:28 by abisani           #+#    #+#             */
-/*   Updated: 2025/12/14 18:27:12 by abisiani         ###   ########.fr       */
+/*   Updated: 2025/12/18 12:28:32 by abisiani         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -40,8 +40,10 @@ int	main(int argc, char *argv[])
 		clean_up(&stacks);
 	if (argc > 1 && argc < 6)
 		sort_five(&stacks);
-	else
+	else if (argc < 350)
 		chunk_sort(&stacks);
+	else
+		radix_sort(&stacks);
 	naive_pass(&stacks);
 	print_log(stacks.log->prev, stacks.log->prev);
 	clean_up(&stacks);

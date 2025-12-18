@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abisiani <abisiani@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 14:14:56 by abisiani          #+#    #+#             */
-/*   Updated: 2025/12/14 12:29:21 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/18 12:45:50 by abisiani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../push_swap.h"
 
-int	rotate(t_list_node **lst, t_stacks *stacks)
+void	rotate(t_list_node **lst, t_stacks *stacks)
 {
 	if (!lst || !*lst)
-		return (-1);
+		return ;
 	if (*lst == stacks->a)
 	{
 		if (!log_op(&(stacks->log), "ra"))
@@ -27,13 +27,12 @@ int	rotate(t_list_node **lst, t_stacks *stacks)
 			ps_error(stacks);
 	}
 	*lst = (*lst)->next;
-	return (0);
 }
 
-int	rrotate(t_list_node **lst, t_stacks *stacks)
+void	rrotate(t_list_node **lst, t_stacks *stacks)
 {
 	if (!lst || !*lst)
-		return (-1);
+		return ;
 	if (*lst == stacks->a)
 	{
 		if (!log_op(&(stacks->log), "rra"))
@@ -45,5 +44,4 @@ int	rrotate(t_list_node **lst, t_stacks *stacks)
 			ps_error(stacks);
 	}
 	*lst = (*lst)->prev;
-	return (0);
 }

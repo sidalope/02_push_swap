@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abisani <abisani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abisiani <abisiani@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:52:41 by abisani           #+#    #+#             */
-/*   Updated: 2025/12/14 12:56:30 by abisani          ###   ########.fr       */
+/*   Updated: 2025/12/18 12:17:03 by abisiani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int	init_num_chunks(t_stacks *stacks)
 	if (!stacks)
 		return (0);
 	size_a = ft_lstsize(stacks->a, 0, stacks->a);
-	if (size_a <= 20)
-		n_chunks = 2;
-	else if (size_a <= 50)
+	if (size_a <= 30)
 		n_chunks = 3;
+	else if (size_a <= 50)
+		n_chunks = 5;
 	else if (size_a <= 100)
 		n_chunks = 7;
 	else if (size_a <= 300)

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abisani <abisani@student.42.fr>            +#+  +:+       +#+         #
+#    By: abisiani <abisiani@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/07 22:59:16 by abisiani          #+#    #+#              #
-#    Updated: 2025/12/14 11:51:09 by abisani          ###   ########.fr        #
+#    Updated: 2025/12/18 12:32:20 by abisiani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,8 @@ LIB_SRC_FILES = init.c sort_fixed_sizes.c
 CHUNK_SORT_FILES = chunk_sort.c chunk_split.c chunk_merge.c \
 	chunk_merge_execute.c chunk_merge_utils.c
 
+RADIX_SORT_FILES = radix_sort.c
+
 LIST_FILES = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstpop.c \
 	ft_lstclear.c ft_lstiter.c
 
@@ -47,12 +49,13 @@ DEBUG_FILES = print_chunks.c print_content.c print_costs.c
 MAIN_SRC = $(addprefix $(SRC_DIR)/, $(MAIN_SRC_FILES))
 LIB_SRC = $(addprefix $(SRC_DIR)/, $(LIB_SRC_FILES)) \
 	$(addprefix $(SRC_DIR)/, $(CHUNK_SORT_FILES)) \
+	$(addprefix $(SRC_DIR)/, $(RADIX_SORT_FILES)) \
 	$(addprefix $(SRC_DIR)/utils/, $(UTILS_FILES)) \
 	$(addprefix $(SRC_DIR)/cd_linked_list/list_utils/, $(LIST_UTILS_FILES)) \
 	$(addprefix $(SRC_DIR)/cd_linked_list/, $(LIST_FILES)) \
 	$(addprefix $(SRC_DIR)/op_optimiser/, $(OPTIMISER_FILES)) \
 	$(addprefix $(SRC_DIR)/printf/, $(PRINTF_FILES)) \
-	$(addprefix $(SRC_DIR)/debug/, $(DEBUG_FILES))
+	$(addprefix $(SRC_DIR)/debug/, $(DEBUG_FILES)) 
 
 MAIN_OBJ = $(MAIN_SRC:.c=.o)
 LIB_OBJ = $(LIB_SRC:.c=.o)

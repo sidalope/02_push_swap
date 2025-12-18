@@ -31,12 +31,12 @@ void	radix_sort(t_stacks *stacks)
 		while (size_a--)
 		{
 			if ((stacks->a->rank >> i) & 1)
-				rotate(&(stacks->a), stacks->a);
+				rotate(&(stacks->a), stacks);
 			else
-				push(&(stacks->a), &(stacks->b), stacks->a);
+				push(&(stacks->a), &(stacks->b), stacks);
 		}
 		while (stacks->b)
-			push(&(stacks->b), &(stacks->a), stacks->a);
+			push(&(stacks->b), &(stacks->a), stacks);
 		i++;
 	}
 }
