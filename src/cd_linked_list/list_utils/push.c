@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abisiani <abisiani@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: abisani <abisani@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 19:45:41 by abisiani          #+#    #+#             */
-/*   Updated: 2025/12/18 12:45:26 by abisiani         ###   ########.fr       */
+/*   Updated: 2025/12/18 13:18:33 by abisani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ static void	log_push(t_stacks *stacks, t_list_node **src)
 	}
 }
 
-void	push(t_list_node **src, t_list_node **dest, \
-			t_stacks *stacks)
+void	push(t_list_node **src, t_list_node **dest, t_stacks *stacks)
 {
 	t_list_node	*second;
 	t_list_node	*last;
