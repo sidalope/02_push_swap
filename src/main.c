@@ -6,7 +6,7 @@
 /*   By: abisiani <abisiani@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 18:58:28 by abisani           #+#    #+#             */
-/*   Updated: 2025/12/18 13:55:28 by abisiani         ###   ########.fr       */
+/*   Updated: 2025/12/18 14:49:39 by abisiani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ int	main(int argc, char *argv[])
 	argc--;
 	init(argc, argv, &stacks);
 	if (is_sorted(stacks.a))
+	{
 		clean_up(&stacks);
+		return (0);
+	}
 	if (argc > 1 && argc < 6)
 		sort_five(&stacks);
 	else if (argc < 350)
