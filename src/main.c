@@ -6,7 +6,7 @@
 /*   By: abisiani <abisiani@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 18:58:28 by abisani           #+#    #+#             */
-/*   Updated: 2025/12/18 12:28:32 by abisiani         ###   ########.fr       */
+/*   Updated: 2025/12/18 12:55:39 by abisiani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	clean_up(t_stacks *stacks)
 	ft_lstclear(&stacks->a, stacks->a);
 	ft_lstclear(&stacks->b, stacks->b);
 	ft_lstclear(&stacks->log, stacks->log);
-	exit(0);
 }
 
 /* Write error message to stderr, clean up, and exit */
@@ -26,6 +25,7 @@ void	ps_error(t_stacks *stacks)
 {
 	write(2, "Error\n", 7);
 	clean_up(stacks);
+	exit(1);
 }
 
 int	main(int argc, char *argv[])
